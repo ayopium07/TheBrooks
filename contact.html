@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Behold the Glory of God</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Official website of The Confluence Camp Retreat 2026. Join us from 23rd – 25th July, 2026 at Redemption City of God, Ogun State, Nigeria for a spiritual encounter. Theme: Behold the Glory of God. Free registration, feeding, and accommodation provided.">
+  <meta name="keywords"
+    content="The Confluence Camp, Retreat 2026, The Brooks Ministry, Behold the Glory of God, Christian Youth Retreat, Nigeria Christian Event">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Splash Screen / Intro Landing Page -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-bg-glow"></div>
+    <div class="splash-content">
+      <img src="public/Asset 8mom.png" alt="The Brooks Logo" class="splash-logo" />
+      <h1 class="splash-title">The Brooks</h1>
+      <div class="splash-loader">
+        <div class="splash-loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header id="site-header">
+    <div class="nav-container-wrapper">
+      <a href="index.html" class="logo">
+        <img src="public/TBMlogo.png" alt="The Brooks Ministry Logo" class="logo-image" />
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu-container">
+        <ul class="nav-menu" id="desktop-nav">
+          <li class="nav-item" data-tab="home"><a href="index.html">Home</a></li>
+          <li class="nav-item" data-tab="about"><a href="about.html">About</a></li>
+          <li class="nav-item" data-tab="volunteer"><a href="volunteer.html">Volunteer</a></li>
+          <li class="nav-item" data-tab="partners"><a href="partners.html">Partners</a></li>
+          <li class="nav-item active" data-tab="contact"><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="hamburger" id="hamburger-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay & Backdrop -->
+  <div class="drawer-backdrop" id="drawer-backdrop-el"></div>
+  <aside class="mobile-drawer" id="mobile-drawer-el">
+    <ul class="mobile-nav-list" id="mobile-nav">
+      <li class="mobile-nav-item" data-tab="home"><a href="index.html">Home</a></li>
+      <li class="mobile-nav-item" data-tab="about"><a href="about.html">About</a></li>
+      <li class="mobile-nav-item" data-tab="volunteer"><a href="volunteer.html">Volunteer</a></li>
+      <li class="mobile-nav-item" data-tab="partners"><a href="partners.html">Partners</a></li>
+      <li class="mobile-nav-item active" data-tab="contact"><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div style="text-align: center; font-size: 0.8rem; color: var(--color-text-muted); margin-top: 30px;">
+      <p>Organised by The Brooks Ministry</p>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MAIN CONTENT PANEL
+       ========================================== -->
+  <main id="main-content-panel">
+
+    <div class="page-view active-view" id="view-contact">
+      
+      <!-- Redesigned Contact Hero Section -->
+      <section class="contact-hero-section">
+        <div class="container">
+          <div class="contact-hero-grid">
+            <div class="contact-hero-text reveal-left">
+              <span class="contact-tag">✦ WE ARE ONLINE</span>
+              <h1>Get in Touch</h1>
+              <p class="about-lead">Have specific inquiries about transport coordinates, partnerships, or volunteering? Reach out directly.</p>
+              <p class="about-lead" style="font-size: 1rem; opacity: 0.88; margin-top: 14px;">
+                Our operations desk and communications teams are available to guide you through registration queries, lodging directions, and service pathways. We look forward to hearing from you.
+              </p>
+            </div>
+            <div class="contact-hero-showcase reveal-right">
+              <div class="contact-stats-card">
+                <div class="stat-item">
+                  <span class="stat-number">24/7</span>
+                  <span class="stat-label">Inquiry Response Window</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                  <span class="stat-number">WhatsApp</span>
+                  <span class="stat-label">Instant Community Hub</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                  <span class="stat-number">Redemption City</span>
+                  <span class="stat-label">Retreat Venue</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Channels Showcase Grid Section -->
+      <section class="bg-off-white" style="padding: 90px 0 70px;">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 50px;" class="reveal">
+            <p style="font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-brooks-blue); font-weight: 700; margin-bottom: 12px; opacity: 0.75;">
+              Communication Hub
+            </p>
+            <h2 style="color: var(--color-brooks-blue); margin: 0 0 16px; font-size: clamp(2rem, 4vw, 2.6rem); text-transform: uppercase;">
+              Contact Channels
+            </h2>
+            <div style="width: 48px; height: 3px; background: var(--color-sunlight); border-radius: 2px; margin: 0 auto;"></div>
+          </div>
+
+          <div class="contact-channels-grid reveal">
+            <!-- Phone -->
+            <div class="channel-card">
+              <div class="channel-icon-box">📞</div>
+              <h3 class="channel-title">Phone Inquiries</h3>
+              <p class="channel-desc">Speak directly with our logistics team for transport bookings and emergency coordination.</p>
+              <div class="channel-value">
+                <a href="tel:+2348031234567" id="cms-contact-phone">+234 (0) 803 123 4567</a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="channel-card">
+              <div class="channel-icon-box">✉️</div>
+              <h3 class="channel-title">Email Address</h3>
+              <p class="channel-desc">Send official letters, partnership proposals, and administrative inquiries to our inbox.</p>
+              <div class="channel-value">
+                <a href="mailto:info@thebrooksministry.org" id="cms-contact-email">info@thebrooksministry.org</a>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="channel-card">
+              <div class="channel-icon-box" style="background: rgba(37, 211, 102, 0.08); border-color: rgba(37, 211, 102, 0.25); color: #25D366;">💬</div>
+              <h3 class="channel-title" style="color: #25D366;">WhatsApp Channel</h3>
+              <p class="channel-desc">Join our broadcast channel for real-time announcements, pre-retreat prayers, and camp guides.</p>
+              <div class="channel-value">
+                <a href="#" id="cms-contact-whatsapp" target="_blank" style="color: #25D366; text-decoration: underline;">Join the Channel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Centered Direct Message Form Section -->
+      <section class="bg-off-white contact-form-wrapper" style="padding: 90px 0; border-top: 1px solid rgba(10, 102, 194, 0.06);">
+        <div class="container" style="max-width: 750px;">
+          <div style="text-align: center; margin-bottom: 50px;" class="reveal">
+            <h2 style="color: var(--color-brooks-blue); margin: 0 0 16px; text-transform: uppercase;">Send a Direct Message</h2>
+            <p style="color: #475569; max-width: 500px; margin: 0 auto;">Have a custom question or prayer request? Fill out the form below, and our team will get back to you.</p>
+          </div>
+
+          <div class="glass-card reveal" style="background: rgba(10, 102, 194, 0.03); border: 1px solid rgba(10, 102, 194, 0.12); padding: 40px; border-radius: var(--border-radius-lg);">
+            
+            <form id="contact-msg-form" action="#">
+              <div class="form-group">
+                <label for="con-name" style="color: var(--color-brooks-blue); font-weight: 700;">Full Name *</label>
+                <input type="text" id="con-name" placeholder="John Doe" required style="border-color: rgba(10, 102, 194, 0.2); color: #2c2c3e; background: rgba(255, 255, 255, 0.85);">
+              </div>
+              
+              <div class="form-group">
+                <label for="con-email" style="color: var(--color-brooks-blue); font-weight: 700;">Email Address *</label>
+                <input type="email" id="con-email" placeholder="john@gmail.com" required style="border-color: rgba(10, 102, 194, 0.2); color: #2c2c3e; background: rgba(255, 255, 255, 0.85);">
+              </div>
+              
+              <div class="form-group">
+                <label for="con-message" style="color: var(--color-brooks-blue); font-weight: 700;">Message *</label>
+                <textarea id="con-message" placeholder="Type your message or inquiry here..." required style="border-color: rgba(10, 102, 194, 0.2); color: #2c2c3e; background: rgba(255, 255, 255, 0.85); height: 150px;"></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" style="width: 100%; font-family: var(--font-heading); font-weight: 700;">
+                Send Message
+              </button>
+            </form>
+
+            <!-- Contact Success Screen -->
+            <div id="contact-success-panel" style="display:none; text-align: center; padding: 20px;">
+              <div class="success-icon" style="width:60px; height:60px; margin: 0 auto 20px; background: rgba(76, 175, 80, 0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--color-success);">
+                <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <h3 style="color: var(--color-brooks-blue); font-family: var(--font-heading); font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; text-transform: uppercase;">Message Sent</h3>
+              <p style="font-size: 1rem; color: #475569; max-width: 480px; margin: 0 auto 20px; font-family: var(--font-body);">We have received your message and will respond to your email as soon as possible.</p>
+              <button class="btn btn-secondary" id="btn-con-reset" style="background: rgba(10, 102, 194, 0.08); border-color: rgba(10, 102, 194, 0.15); color: var(--color-brooks-blue); font-family: var(--font-heading); font-weight: 700;">
+                Close
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ CTA Banner Section -->
+      <section class="bg-brooks" style="padding: 80px 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container" style="max-width: 600px;">
+          <div class="reveal">
+            <p style="font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-sunlight); font-weight: 700; margin-bottom: 12px;">
+              Got Questions?
+            </p>
+            <h2 style="color: #fff; margin: 0 0 16px; font-size: clamp(1.8rem, 3.5vw, 2.2rem); text-transform: uppercase;">
+              Frequently Asked Questions
+            </h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 28px; line-height: 1.6; font-family: var(--font-body);">
+              Before sending a message, consider checking our comprehensive FAQ center. We have documented answers for accommodation queries, feeding arrangements, transport schedules, and event parameters.
+            </p>
+            <a href="faq.html" class="btn btn-primary" style="font-family: var(--font-heading); font-weight: 700; background: var(--color-sunlight); color: var(--color-brooks-blue); border-color: var(--color-sunlight); display: inline-block;">
+              Visit the FAQ Center
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <a href="index.html" class="logo">
+          <img src="public/TBMlogo.png" alt="The Brooks Ministry Logo" class="logo-image" style="height: 42px;" />
+        </a>
+        <p class="footer-tagline">The Confluence Camp Retreat is convened by <strong>The Brooks Ministry</strong>. We are
+          dedicated to raising young believers in spiritual depth, alignment, and kingdom obedience.</p>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Facebook">FB</a>
+          <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="social-icon" aria-label="Twitter">TW</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Navigation</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="volunteer.html">Volunteer Portal</a></li>
+          <li><a href="partners.html">Support a Camper</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Logistics Hub</h3>
+        <ul class="footer-links">
+          <li><a href="experience.html">Retreat Experience</a></li>
+          <li><a href="index.html#homepage-speakers-sec">Speakers</a></li>
+          <li><a href="faq.html">Frequently Asked Questions</a></li>
+          <li><a href="register.html">Register for Retreat</a></li>
+          <li><a href="admin.html">Administrator Panel</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 The Brooks Ministry. The Confluence Camp Retreat 2026. All rights reserved.</p>
+      <p>Theme: Behold the Glory of God | 23rd – 25th July, 2026</p>
+    </div>
+  </footer>
+
+  <!-- Javascript Logic -->
+  <script src="app.js"></script>
+</body>
+
+</html>

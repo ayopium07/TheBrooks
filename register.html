@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register for The Confluence Camp | Behold the Glory of God</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Official website of The Confluence Camp Retreat 2026. Join us from 23rd – 25th July, 2026 at Redemption City of God, Ogun State, Nigeria for a spiritual encounter. Theme: Behold the Glory of God. Free registration, feeding, and accommodation provided.">
+  <meta name="keywords"
+    content="The Confluence Camp, Retreat 2026, The Brooks Ministry, Behold the Glory of God, Christian Youth Retreat, Nigeria Christian Event">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Splash Screen / Intro Landing Page -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-bg-glow"></div>
+    <div class="splash-content">
+      <img src="public/Asset 8mom.png" alt="The Brooks Logo" class="splash-logo" />
+      <h1 class="splash-title">The Brooks</h1>
+      <div class="splash-loader">
+        <div class="splash-loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header id="site-header">
+    <div class="nav-container-wrapper">
+      <a href="index.html" class="logo">
+        <img src="public/TBMlogo.png" alt="The Brooks Ministry Logo" class="logo-image" />
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu-container">
+        <ul class="nav-menu" id="desktop-nav">
+          <li class="nav-item" data-tab="home"><a href="index.html">Home</a></li>
+          <li class="nav-item" data-tab="about"><a href="about.html">About</a></li>
+          <li class="nav-item" data-tab="volunteer"><a href="volunteer.html">Volunteer</a></li>
+          <li class="nav-item" data-tab="partners"><a href="partners.html">Partners</a></li>
+          <li class="nav-item" data-tab="contact"><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="hamburger" id="hamburger-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay & Backdrop -->
+  <div class="drawer-backdrop" id="drawer-backdrop-el"></div>
+  <aside class="mobile-drawer" id="mobile-drawer-el">
+    <ul class="mobile-nav-list" id="mobile-nav">
+      <li class="mobile-nav-item" data-tab="home"><a href="index.html">Home</a></li>
+      <li class="mobile-nav-item" data-tab="about"><a href="about.html">About</a></li>
+      <li class="mobile-nav-item" data-tab="volunteer"><a href="volunteer.html">Volunteer</a></li>
+      <li class="mobile-nav-item" data-tab="partners"><a href="partners.html">Partners</a></li>
+      <li class="mobile-nav-item" data-tab="contact"><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div style="text-align: center; font-size: 0.8rem; color: var(--color-text-muted); margin-top: 30px;">
+      <p>Organised by The Brooks Ministry</p>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MAIN CONTENT PANEL
+       ========================================== -->
+  <main id="main-content-panel">
+
+    <div class="page-view active-view" id="view-register">
+      <section>
+        <div class="container">
+          <h2>Register for The Confluence 2026</h2>
+          <p style="text-align: center; max-width: 600px; margin: -20px auto 40px; color: var(--color-text-muted);">
+            Attendance is free, but registration is mandatory to secure accommodation, meals, and entry.
+          </p>
+
+          <div class="form-container">
+            <!-- Registration Form Panel -->
+            <div id="registration-form-panel">
+              <div class="glass-card reveal" style="margin-bottom: 30px;">
+                <form id="retreat-reg-form" action="#">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="reg-first-name">First Name *</label>
+                      <input type="text" id="reg-first-name" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="reg-last-name">Last Name *</label>
+                      <input type="text" id="reg-last-name" placeholder="Doe" required>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="reg-email">Email Address *</label>
+                      <input type="email" id="reg-email" placeholder="john.doe@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="reg-phone">Phone Number *</label>
+                      <input type="tel" id="reg-phone" placeholder="08012345678" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reg-church">Denomination / Local Church *</label>
+                    <input type="text" id="reg-church" placeholder="e.g. RCCG, Winners Chapel, CAC, etc." required>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="reg-gender">Gender *</label>
+                      <select id="reg-gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="reg-occupation">Category *</label>
+                      <select id="reg-occupation" required>
+                        <option value="">Select Category</option>
+                        <option value="Student">University Student</option>
+                        <option value="Professional">Young Professional</option>
+                        <option value="Leader">Christian Leader / Pastor</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="reg-emergency-name">Emergency Contact Name *</label>
+                      <input type="text" id="reg-emergency-name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="reg-emergency-phone">Emergency Phone *</label>
+                      <input type="tel" id="reg-emergency-phone" placeholder="Phone Number" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Will you require accommodation in Redemption City? *</label>
+                    <div class="checkbox-group">
+                      <label class="checkbox-label">
+                        <input type="radio" name="accommodation-need" value="Yes" required checked> Yes, I will require
+                        accommodation.
+                      </label>
+                      <label class="checkbox-label">
+                        <input type="radio" name="accommodation-need" value="No"> No, I will arrange my own
+                        accommodation.
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="reg-volunteer-interest"> I am interested in volunteering for a
+                      department during the retreat.
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Submit
+                    Registration</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Google Form Embedded Alternative -->
+            <div id="registration-embed-panel" style="display:none;">
+              <div class="embed-form-card">
+                <div class="embed-iframe-mock">
+                  <svg width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                  </svg>
+                  <h3>Retreat Registration Form</h3>
+                  <p style="margin-bottom: 25px;">You are about to be redirected to our Google Form to submit your
+                    registration details.</p>
+                  <a href="#" id="cms-gform-reg-link" class="btn btn-primary" target="_blank">Open Registration Form</a>
+                  <button class="btn btn-secondary" style="margin-top: 15px;" id="btn-use-local-reg">Use Local
+                    Form</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Success Redirection Panel -->
+            <div id="registration-success-panel" style="display:none;">
+              <div class="glass-card success-screen">
+                <div class="success-icon">
+                  <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
+                <h2>Registration Received!</h2>
+                <p style="margin-top: 15px; font-size: 1.05rem;">Thank you for registering for The Confluence Camp Retreat
+                  2026. Your details have been secured.</p>
+
+                <div
+                  style="background: rgba(252,238,33,0.05); padding: 20px; border-radius: var(--border-radius-md); border: 1px dashed var(--color-border); margin: 30px 0;">
+                  <h4 style="color: var(--color-sunlight); margin-bottom: 8px;">📢 CRITICAL NEXT STEP</h4>
+                  <p style="font-size: 0.9rem; margin-bottom: 15px;">To receive feeding timetables, room assignments,
+                    and pre-camp prayer guides, you must join our WhatsApp Community.</p>
+                  <a href="#" class="btn btn-primary" id="cms-whatsapp-link-success" target="_blank"
+                    style="background-color: #25D366; color: white; box-shadow: none;">
+                    💬 Join WhatsApp Community
+                  </a>
+                </div>
+
+                <button class="btn btn-secondary" id="btn-reg-another">Register Another Camper</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <a href="index.html" class="logo">
+          <img src="public/TBMlogo.png" alt="The Brooks Ministry Logo" class="logo-image" style="height: 42px;" />
+        </a>
+        <p class="footer-tagline">The Confluence Camp Retreat is convened by <strong>The Brooks Ministry</strong>. We are
+          dedicated to raising young believers in spiritual depth, alignment, and kingdom obedience.</p>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Facebook">FB</a>
+          <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="social-icon" aria-label="Twitter">TW</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Navigation</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="volunteer.html">Volunteer Portal</a></li>
+          <li><a href="partners.html">Support a Camper</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Logistics Hub</h3>
+        <ul class="footer-links">
+          <li><a href="experience.html">Retreat Experience</a></li>
+          <li><a href="index.html#homepage-speakers-sec">Speakers</a></li>
+          <li><a href="faq.html">Frequently Asked Questions</a></li>
+          <li><a href="register.html">Register for Retreat</a></li>
+          <li><a href="admin.html">Administrator Panel</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 The Brooks Ministry. The Confluence Camp Retreat 2026. All rights reserved.</p>
+      <p>Theme: Behold the Glory of God | 23rd – 25th July, 2026</p>
+    </div>
+  </footer>
+
+  <!-- Javascript Logic -->
+  <script src="app.js"></script>
+</body>
+
+</html>
