@@ -125,7 +125,7 @@ export default function PartnersPage() {
             <div className="tier-card">
               <div className="tier-icon-box">🎓</div>
               <h3 className="tier-title">Sponsor a Camper</h3>
-              <p className="tier-desc">Cover the logistical cost of accommodation, 3 daily meals, and comprehensive retreat manuals for university students.</p>
+              <p className="tier-desc">Cover the logistical cost of accommodation, 2 daily meals, and comprehensive retreat manuals for university students.</p>
               <div className="tier-amount">
                 ₦15,000 <span className="tier-amount-sub">/ Camper</span>
               </div>

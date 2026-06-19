@@ -4,20 +4,20 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const DEFAULT_CMS_STATE = {
   retreatTheme: "Behold the Glory of God",
-  retreatTagline: "The Confluence Camp Retreat 2026",
+  retreatTagline: "The CONFLUENCE CAMP RETREAT 2026",
   retreatDates: "23rd – 25th July, 2026",
-  retreatCountdownTarget: "2026-07-23T09:00:00",
+  retreatCountdownTarget: "2026-07-23T09:00:00+01:00",
   retreatVenue: "Redemption City of God, Ogun State, Nigeria",
-  whatsappLink: "https://chat.whatsapp.com/TheConfluenceCamp2026MockLink",
+  whatsappLink: "https://chat.whatsapp.com/J2tutN6yBTFCQpA6drb6aH?s=sh&p=a&mlu=3&amv=3",
   registrationMode: "local",
   googleFormRegLink: "https://docs.google.com/forms/d/e/1FAIpQLSeMockRegistrationFormLink/viewform",
   announcementActive: true,
-  announcementText: "Welcome to The Confluence 2026! Secure your free lodging and feeding by registering early.",
+  announcementText: "Welcome to The CONFLUENCE CAMP RETREAT 2026! Secure your free lodging and feeding by registering early.",
   announcementCtaText: "Register Free",
   announcementCtaHash: "#register",
-  contactPhone: "+234 (0) 803 999 8888",
-  contactEmail: "retreat@thebrooksministry.org",
-  contactWhatsappChannel: "https://whatsapp.com/channel/TheBrooksMinistryMockChannel",
+  contactPhone: "09011393407",
+  contactEmail: "thebrooksconfluence@gmail.com",
+  contactWhatsappChannel: "https://chat.whatsapp.com/J2tutN6yBTFCQpA6drb6aH?s=sh&p=a&mlu=3&amv=3",
 
   speakers: [
     {
@@ -51,7 +51,7 @@ const DEFAULT_CMS_STATE = {
     },
     {
       id: "faq-2",
-      question: "Who can attend The Confluence Camp Retreat?",
+      question: "Who can attend The CONFLUENCE CAMP RETREAT?",
       answer: "The retreat is open to university students, young professionals, ministry workers, and any young adult seeking sincere spiritual growth and fellowship."
     },
     {
@@ -74,23 +74,48 @@ const DEFAULT_CMS_STATE = {
   gallery: [
     {
       id: "gal-1",
-      title: "Intense Prayer Altars",
-      url: "https://images.unsplash.com/photo-1544427920-c49bcbabf08e?auto=format&fit=crop&w=600&q=80"
+      title: "Atmosphere of Worship",
+      url: "/ce1.jpg"
     },
     {
       id: "gal-2",
-      title: "Teaching & Word Discipleship",
-      url: "https://images.unsplash.com/photo-1504052434569-70ad58565b90?auto=format&fit=crop&w=600&q=80"
+      title: "Fervent Prayer Watches",
+      url: "/ce2.jpg"
     },
     {
       id: "gal-3",
-      title: "Atmosphere of Sacred Worship",
-      url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80"
+      title: "Sound Biblical Teachings",
+      url: "/ce3.jpg"
     },
     {
       id: "gal-4",
-      title: "Believers Fellowship & Joy",
-      url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"
+      title: "Consecrated Youth Devotion",
+      url: "/ce4.jpg"
+    },
+    {
+      id: "gal-5",
+      title: "Sacred Altar Encounters",
+      url: "/ce5.jpg"
+    },
+    {
+      id: "gal-6",
+      title: "Spiritual Depth & Clarity",
+      url: "/ce6.jpg"
+    },
+    {
+      id: "gal-7",
+      title: "Fellowship of Believers",
+      url: "/ce7.jpg"
+    },
+    {
+      id: "gal-8",
+      title: "Moments of Reflection",
+      url: "/ce8.jpg"
+    },
+    {
+      id: "gal-9",
+      title: "Kingdom Impact & Action",
+      url: "/ce9.jpg"
     }
   ],
 
@@ -99,17 +124,17 @@ const DEFAULT_CMS_STATE = {
   homeVisionQuote: "\"Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching.\"",
   homeVisionQuoteRef: "— Hebrews 10:25",
 
-  aboutHeroText: "The Confluence Camp Meeting is the retreat experience of The Brooks Ministry.\n\nBorn out of a burden to see believers encounter God beyond routine gatherings, Confluence Camp was established as a space where people can pause, retreat, and intentionally seek God together and even personally.\n\nThe retreat combines sound biblical teaching, fervent prayer, heartfelt worship, community building, and moments of personal reflection to create an atmosphere where spiritual growth can flourish. Each edition is centred on a divine emphasis for the season, guiding participants into deeper intimacy with God, greater spiritual clarity, and renewed commitment to His purpose.\n\nThe Confluence Camp is for believers, young people, leaders, ministers, kingdom workers, and anyone hungry for a deeper relationship with God, spiritual growth, divine direction, and a fresh encounter with His presence.",
+  aboutHeroText: "The CONFLUENCE CAMP RETREAT is the retreat experience of The Brooks Ministry.\n\nBorn out of a burden to see believers encounter God beyond routine gatherings, Confluence Camp was established as a space where people can pause, retreat, and intentionally seek God together and even personally.\n\nThe retreat combines sound biblical teaching, fervent prayer, heartfelt worship, community building, and moments of personal reflection to create an atmosphere where spiritual growth can flourish. Each edition is centred on a divine emphasis for the season, guiding participants into deeper intimacy with God, greater spiritual clarity, and renewed commitment to His purpose.\n\nThe Confluence Camp is for believers, young people, leaders, ministers, kingdom workers, and anyone hungry for a deeper relationship with God, spiritual growth, divine direction, and a fresh encounter with His presence.",
   aboutIdentityText: "The Brooks is a forward-looking spiritual movement dedicated to raising the next generation of Christian leaders. We bridge the gap between ancient faith and modern societal impact.",
   aboutStrategyText: "By identifying and equipping believers across all walks of life, we build a global network of visionaries prepared to establish the Kingdom of God in every sphere of influence.",
   aboutMandateText: "\"To see a generation of spiritually active, doctrinally grounded, and purpose-driven young believers deployed as kingdom-sent agents of transformation across the nations.\"",
 
-  volunteerCallText: "At The Confluence Camp Retreat, service is an act of worship. Every chair arranged, every technical signal sent, and every meal served is a vital contribution to the spiritual atmosphere of the retreat. We invite you to consecrate your time, talents, and energy to serve the body of Christ.\n\nWhether you have professional skills in media and technical operations, or a heart to serve in welfare and hospitality, there is a place for you. Join hands with other young believers as we build an altar of encounter for this generation.",
+  volunteerCallText: "At The CONFLUENCE CAMP RETREAT, service is an act of worship. Every chair arranged, every technical signal sent, and every meal served is a vital contribution to the spiritual atmosphere of the retreat. We invite you to consecrate your time, talents, and energy to serve the body of Christ.\n\nWhether you have professional skills in media and technical operations, or a heart to serve in welfare and hospitality, there is a place for you. Join hands with other young believers as we build an altar of encounter for this generation.",
 
-  partnersCallText: "The Confluence Camp Retreat is convened by The Brooks Ministry as a non-profit endeavor. We serve university students and young adults across the nation with standard accommodations, balanced daily feeding, and study resources at zero cost to them.\n\nThis mandate is fully funded by individuals and corporate bodies who share our vision to see a generation raised in fire, character, and alignment. Partner with us to keep the fire burning on the altar.",
-  partnersBankName: "Guaranty Trust Bank (GTBank)",
-  partnersAccountName: "The Brooks Ministry",
-  partnersAccountNo: "0123456789",
+  partnersCallText: "The CONFLUENCE CAMP RETREAT is convened by The Brooks Ministry as a non-profit endeavor. We serve university students and young adults across the nation with standard accommodations, balanced daily feeding, and study resources at zero cost to them.\n\nThis mandate is fully funded by individuals and corporate bodies who share our vision to see a generation raised in fire, character, and alignment. Partner with us to keep the fire burning on the altar.",
+  partnersBankName: "VFD Microfinance Bank",
+  partnersAccountName: "Erioluwa Adeyinka",
+  partnersAccountNo: "1007142350",
 
   experienceCallText: "We believe that spiritual focus requires freedom from logistical worries. To support your retreat experience, The Brooks Ministry provides accommodation and feeding for all registered attendees throughout the retreat, completely free of charge.\n\nSeparate hostels are secured for male and female campers with standard facilities within the Redemption City of God. Our welfare team coordinates three daily balanced meals to ensure every camper remains physically energized.",
 
@@ -135,6 +160,36 @@ export function CMSProvider({ children }) {
         Object.keys(parsed).forEach(key => {
           merged[key] = parsed[key];
         });
+        // Auto-migrate old gallery if it contains unsplash images or is the legacy 4-item list
+        if (merged.gallery && (merged.gallery.length === 4 || merged.gallery.some(img => img.url.includes("unsplash.com")))) {
+          merged.gallery = DEFAULT_CMS_STATE.gallery;
+          localStorage.setItem("confluence_cms_state", JSON.stringify(merged));
+        }
+        // Auto-migrate bank details if they are the old default values
+        if (merged.partnersAccountNo === "0123456789" || merged.partnersAccountName === "The Brooks Ministry" || merged.partnersBankName === "Guaranty Trust Bank (GTBank)") {
+          merged.partnersBankName = DEFAULT_CMS_STATE.partnersBankName;
+          merged.partnersAccountName = DEFAULT_CMS_STATE.partnersAccountName;
+          merged.partnersAccountNo = DEFAULT_CMS_STATE.partnersAccountNo;
+          localStorage.setItem("confluence_cms_state", JSON.stringify(merged));
+        }
+        // Auto-migrate contact details if they are the old default values
+        if (
+          merged.contactEmail === "retreat@thebrooksministry.org" ||
+          merged.contactPhone === "+234 (0) 803 999 8888" ||
+          merged.whatsappLink === "https://chat.whatsapp.com/TheConfluenceCamp2026MockLink" ||
+          merged.contactWhatsappChannel === "https://whatsapp.com/channel/TheBrooksMinistryMockChannel"
+        ) {
+          merged.contactEmail = DEFAULT_CMS_STATE.contactEmail;
+          merged.contactPhone = DEFAULT_CMS_STATE.contactPhone;
+          merged.whatsappLink = DEFAULT_CMS_STATE.whatsappLink;
+          merged.contactWhatsappChannel = DEFAULT_CMS_STATE.contactWhatsappChannel;
+          localStorage.setItem("confluence_cms_state", JSON.stringify(merged));
+        }
+        // Auto-migrate legacy countdown target format if it doesn't specify offset
+        if (merged.retreatCountdownTarget === "2026-07-23T09:00:00") {
+          merged.retreatCountdownTarget = DEFAULT_CMS_STATE.retreatCountdownTarget;
+          localStorage.setItem("confluence_cms_state", JSON.stringify(merged));
+        }
         setState(merged);
       } else {
         localStorage.setItem("confluence_cms_state", JSON.stringify(DEFAULT_CMS_STATE));

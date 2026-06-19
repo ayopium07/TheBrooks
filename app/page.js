@@ -45,33 +45,33 @@ export default function HomePage() {
         <div className="hero-grid">
           {/* Left Side: Text and Countdown Content */}
           <div className="hero-text-side">
-            <div className="hero-tag" id="cms-hero-tag">Theme: {state.retreatTheme}</div>
             <h1 className="hero-title" id="cms-hero-title">
-              The Confluence 2026 <span id="cms-hero-subtitle">{state.retreatTheme}</span>
+              {state.retreatTagline || "The CONFLUENCE CAMP RETREAT 2026"}
             </h1>
+            <div className="hero-tag" id="cms-hero-tag">Theme: {state.retreatTheme}</div>
 
             {/* Live Countdown Timer */}
             <CountdownTimer targetDateStr={state.retreatCountdownTarget} />
 
             <div className="hero-meta">
               <div className="hero-meta-item">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span id="cms-meta-dates">{state.retreatDates}</span>
               </div>
               <div className="hero-meta-item">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span id="cms-meta-venue">{state.retreatVenue}</span>
               </div>
               <div className="hero-meta-item">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>Free Registration</span>
@@ -87,7 +87,7 @@ export default function HomePage() {
           {/* Right Side: Image Showcase */}
           <div className="hero-image-side">
             <div className="hero-img-frame">
-              <img src="/hero_camp_retreat.png" alt="Confluence Camp Retreat" />
+              <img src="/hero_camp_retreat.png" alt="The CONFLUENCE CAMP RETREAT" />
             </div>
           </div>
         </div>
@@ -166,16 +166,16 @@ export default function HomePage() {
       {/* Why Attend Section */}
       <section className="bg-brooks">
         <div className="container">
-          <h2>Why Attend Confluence Camp?</h2>
+          <h2>Why Attend The CONFLUENCE CAMP RETREAT?</h2>
           <p style={{ textAlign: 'center', maxWidth: '680px', margin: '-20px auto 50px', color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-            Confluence Camp is for those who desire more than inspiration; it is for those seeking genuine transformation.
+            The CONFLUENCE CAMP RETREAT is for those who desire more than inspiration; it is for those seeking genuine transformation.
           </p>
 
           <div className="why-attend-grid">
             <div className="reason-item glass-card reveal-scale active">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               <div>
@@ -186,8 +186,8 @@ export default function HomePage() {
 
             <div className="reason-item glass-card reveal-scale active">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.232.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
@@ -199,8 +199,8 @@ export default function HomePage() {
 
             <div className="reason-item glass-card reveal-scale active">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                 </svg>
               </div>
@@ -212,8 +212,8 @@ export default function HomePage() {
 
             <div className="reason-item glass-card reveal-scale active">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                 </svg>
               </div>
@@ -225,8 +225,8 @@ export default function HomePage() {
 
             <div className="reason-item glass-card reveal-scale active">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
@@ -238,8 +238,8 @@ export default function HomePage() {
 
             <div className="reason-item glass-card reveal-scale active">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
               </div>
@@ -251,8 +251,8 @@ export default function HomePage() {
 
             <div className="reason-item glass-card reveal-scale active">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
                     d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               </div>
@@ -279,7 +279,7 @@ export default function HomePage() {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <Link href="/register" className="btn btn-primary btn-lg">Register for Confluence Camp 2026</Link>
+            <Link href="/register" className="btn btn-primary btn-lg">Register for The CONFLUENCE CAMP RETREAT 2026</Link>
           </div>
         </div>
       </section>
@@ -328,14 +328,14 @@ export default function HomePage() {
         <div className="container">
           <h2 style={{ textAlign: 'center', marginBottom: '15px' }}>Explore the Retreat</h2>
           <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 50px', color: 'var(--color-text-muted)' }}>
-            Navigate through our retreat portals to prepare your heart and logistics for The Confluence Camp 2026.
+            Navigate through our retreat portals to prepare your heart and logistics for The CONFLUENCE CAMP RETREAT 2026.
           </p>
 
           <div className="explore-grid">
             <div className="explore-card reveal-scale active">
               <div>
                 <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round"
                       d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                   </svg>
@@ -355,7 +355,7 @@ export default function HomePage() {
             <div className="explore-card reveal-scale active">
               <div>
                 <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round"
                       d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
@@ -375,7 +375,7 @@ export default function HomePage() {
             <div className="explore-card reveal-scale active">
               <div>
                 <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round"
                       d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -395,7 +395,7 @@ export default function HomePage() {
             <div className="explore-card explore-card-highlight reveal-scale active">
               <div>
                 <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round"
                       d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
                   </svg>

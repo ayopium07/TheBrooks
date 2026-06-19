@@ -1,10 +1,84 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCMS } from '@/context/CMSContext';
 
 export default function ExperiencePage() {
   const { state, isHydrated } = useCMS();
+
+  // Carousel and Lightbox state
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  // Touch swipe states
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+  const totalItems = state?.gallery ? state.gallery.length : 0;
+
+  // Next and Prev functions
+  const handleNext = () => {
+    if (totalItems === 0) return;
+    setCurrentIndex((prev) => (prev + 1) % totalItems);
+  };
+
+  const handlePrev = () => {
+    if (totalItems === 0) return;
+    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
+  };
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (lightboxIndex === null || !state?.gallery) return;
+      if (e.key === "Escape") {
+        setLightboxIndex(null);
+      } else if (e.key === "ArrowRight") {
+        setLightboxIndex((prev) => (prev + 1) % state.gallery.length);
+      } else if (e.key === "ArrowLeft") {
+        setLightboxIndex((prev) => (prev - 1 + state.gallery.length) % state.gallery.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex, state?.gallery]);
+
+  // Autoplay functionality
+  useEffect(() => {
+    if (!isPlaying || lightboxIndex !== null || totalItems === 0) return;
+
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isPlaying, currentIndex, lightboxIndex, totalItems]);
+
+  // Swipe handlers
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+  };
 
   if (!isHydrated) {
     return <div style={{ minHeight: '100vh', background: 'var(--color-brooks-blue)' }}></div>;
@@ -19,7 +93,7 @@ export default function ExperiencePage() {
             <div className="experience-hero-text reveal-left active">
               <span className="experience-tag">✦ RETREAT EXPERIENCE</span>
               <h1>The Camp Experience</h1>
-              <p className="about-lead">What awaits you at The Confluence Camp 2026? A sacred space structured to help you disconnect from the world and connect with Heaven.</p>
+              <p className="about-lead">What awaits you at The CONFLUENCE CAMP RETREAT 2026? A sacred space structured to help you disconnect from the world and connect with Heaven.</p>
               <p className="about-lead" style={{ fontSize: '1rem', opacity: 0.88, marginTop: '14px' }}>
                 We gather not for entertainment, but for an encounter. Through structured prayer watches, study sessions, and fellowship, we host the presence of God. Prepare your heart.
               </p>
@@ -87,7 +161,7 @@ export default function ExperiencePage() {
             {/* Intercessory Prayers */}
             <div className="feature-card">
               <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -130,7 +204,7 @@ export default function ExperiencePage() {
       </section>
 
       {/* Memory Gallery Section */}
-      <section className="bg-off-white" style={{ padding: '90px 0', borderTop: '1px solid rgba(10, 102, 194, 0.06)' }}>
+      <section className="bg-off-white" style={{ padding: '90px 0', borderTop: '1px solid rgba(10, 102, 194, 0.06)', overflow: 'hidden' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '40px' }} className="reveal active">
             <p style={{ fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-brooks-blue)', fontWeight: 700, marginBottom: '12px', opacity: 0.75 }}>
@@ -145,24 +219,148 @@ export default function ExperiencePage() {
             <div style={{ width: '48px', height: '3px', background: 'var(--color-sunlight)', borderRadius: '2px', margin: '0 auto' }}></div>
           </div>
 
-          <div className="gallery-grid reveal active" id="cms-gallery-list">
-            {!state.gallery || state.gallery.length === 0 ? (
-              <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>No photos in gallery.</p>
-            ) : (
-              state.gallery.map(img => (
-                <div className="gallery-item" key={img.id}>
-                  <img src={img.url} alt={img.title} />
-                  <div className="gallery-overlay">
-                    <div className="gallery-text">
-                      <h4>{img.title}</h4>
-                    </div>
-                  </div>
+          {!state.gallery || state.gallery.length === 0 ? (
+            <p style={{ textAlign: 'center', color: '#475569' }}>No photos in gallery.</p>
+          ) : (
+            <div className="gallery-carousel-wrapper reveal active">
+              {/* Autoplay Progress Timer Bar */}
+              <div className="carousel-progress-bar-container">
+                <div 
+                  className={`carousel-progress-bar ${isPlaying && lightboxIndex === null ? 'animating' : 'paused'}`}
+                  key={currentIndex}
+                />
+              </div>
+
+              {/* Main Slideshow Viewport */}
+              <div 
+                className="slideshow-viewport"
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+                onMouseEnter={() => setIsPlaying(false)}
+                onMouseLeave={() => setIsPlaying(true)}
+              >
+                {/* Slideshow Track */}
+                <div className="slideshow-track">
+                  {state.gallery.map((img, idx) => {
+                    const isActive = idx === currentIndex;
+                    const slideClass = `slideshow-slide ${isActive ? 'active' : 'inactive'}`;
+
+                    return (
+                      <div 
+                        className={slideClass} 
+                        key={img.id}
+                        onClick={() => {
+                          if (isActive) {
+                            setLightboxIndex(idx);
+                          }
+                        }}
+                      >
+                        <img src={img.url} alt={img.title} className="slideshow-image" />
+                      </div>
+                    );
+                  })}
                 </div>
-              ))
-            )}
-          </div>
+              </div>
+
+              {/* Bottom Controls Panel */}
+              <div className="carousel-controls-bottom">
+                {/* Play/Pause Button */}
+                <button 
+                  className={`carousel-play-pause-btn ${isPlaying ? 'playing' : 'paused'}`}
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
+                >
+                  {isPlaying ? (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+                      <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+                    </svg>
+                  ) : (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  )}
+                </button>
+
+                {/* Pagination Dots */}
+                <div className="carousel-dots">
+                  {state.gallery.map((_, idx) => (
+                    <button
+                      key={idx}
+                      className={`carousel-dot ${idx === currentIndex ? 'active' : ''}`}
+                      onClick={() => setCurrentIndex(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && state.gallery && state.gallery[lightboxIndex] && (
+        <div 
+          className="lightbox-overlay active"
+          onClick={() => setLightboxIndex(null)}
+        >
+          {/* Close button */}
+          <button 
+            className="lightbox-close-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex(null);
+            }}
+            aria-label="Close lightbox"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+
+          {/* Lightbox navigation */}
+          <button 
+            className="lightbox-nav-btn prev"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev - 1 + state.gallery.length) % state.gallery.length);
+            }}
+            aria-label="Previous lightbox image"
+          >
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={state.gallery[lightboxIndex].url} 
+              alt={state.gallery[lightboxIndex].title} 
+              className="lightbox-image" 
+            />
+            <div className="lightbox-caption">
+              <h3>{state.gallery[lightboxIndex].title}</h3>
+              <p>Testimony {lightboxIndex + 1} of {state.gallery.length}</p>
+            </div>
+          </div>
+
+          <button 
+            className="lightbox-nav-btn next"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev + 1) % state.gallery.length);
+            }}
+            aria-label="Next lightbox image"
+          >
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

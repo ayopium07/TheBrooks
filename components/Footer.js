@@ -12,15 +12,30 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-info">
           <Link href="/" className="logo">
-            <img src="/TBMlogo.png" alt="The Brooks Ministry Logo" className="logo-image" style={{ height: '42px' }} />
+            <img src="/Asset 8mom.png" alt="The Brooks Ministry Logo" className="logo-image" style={{ height: '42px' }} />
           </Link>
           <p className="footer-tagline">
-            The Confluence Camp Retreat is convened by <strong>The Brooks Ministry</strong>. We are dedicated to raising young believers in spiritual depth, alignment, and kingdom obedience.
+            The CONFLUENCE CAMP RETREAT is convened by <strong>The Brooks Ministry</strong>. We are dedicated to raising young believers in spiritual depth, alignment, and kingdom obedience.
           </p>
           <div className="social-links">
-            <a href="#" className="social-icon" aria-label="Facebook">FB</a>
-            <a href="#" className="social-icon" aria-label="Instagram">IG</a>
-            <a href="#" className="social-icon" aria-label="Twitter">TW</a>
+            <a href="https://www.instagram.com/tbm_theconfluence?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="footer-social-link" target="_blank" rel="noopener noreferrer">
+              <span className="social-icon" aria-label="Instagram">
+                <img src="/Instagram.png" alt="Instagram" style={{ height: '20px', width: '20px', objectFit: 'contain' }} />
+              </span>
+              <span>tbm_theconfluence</span>
+            </a>
+            <a href="https://www.instagram.com/bythebrooks_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="footer-social-link" target="_blank" rel="noopener noreferrer">
+              <span className="social-icon" aria-label="Instagram">
+                <img src="/Instagram.png" alt="Instagram" style={{ height: '20px', width: '20px', objectFit: 'contain' }} />
+              </span>
+              <span>bythebrooks_</span>
+            </a>
+            <a href="https://www.youtube.com/@The-BrooksMinistries" className="footer-social-link" target="_blank" rel="noopener noreferrer">
+              <span className="social-icon" aria-label="YouTube">
+                <img src="/youtube.png" alt="YouTube" style={{ height: '20px', width: '20px', objectFit: 'contain' }} />
+              </span>
+              <span>The Brooks Ministries</span>
+            </a>
           </div>
         </div>
 
@@ -42,13 +57,12 @@ export default function Footer() {
             <li><Link href="/#homepage-speakers-sec">Speakers</Link></li>
             <li><Link href="/faq">Frequently Asked Questions</Link></li>
             <li><Link href="/register">Register for Retreat</Link></li>
-            <li><Link href="/admin">Administrator Panel</Link></li>
           </ul>
         </div>
       </div>
 
       <div className="container footer-bottom">
-        <p>© 2026 The Brooks Ministry. The Confluence Camp Retreat 2026. All rights reserved.</p>
+        <p>© 2026 The Brooks Ministry. The CONFLUENCE CAMP RETREAT 2026. All rights reserved.</p>
         <p>Theme: {state.retreatTheme} | {state.retreatDates}</p>
       </div>
     </footer>

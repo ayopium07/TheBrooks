@@ -31,13 +31,13 @@ export default function AboutPage() {
           <div className="about-hero-grid">
             <div className="about-hero-text reveal-left active">
               <span className="about-tag">✦ THE RETREAT</span>
-              <h1>About The Confluence Camp Meeting</h1>
+              <h1>About The CONFLUENCE CAMP RETREAT</h1>
               <div id="cms-about-hero-text">
                 {state.aboutHeroText.split("\n\n").filter(p => p.trim() !== "").map((p, idx) => {
                   if (idx === 0) {
                     return (
                       <p key={idx} className="about-lead">
-                        The Confluence Camp Meeting is the retreat experience of <strong style={{ color: 'var(--color-sunlight)' }}>The Brooks Ministry</strong>.
+                        The CONFLUENCE CAMP RETREAT is the retreat experience of <strong style={{ color: 'var(--color-sunlight)' }}>The Brooks Ministry</strong>.
                       </p>
                     );
                   }
@@ -385,7 +385,7 @@ export default function AboutPage() {
             <div className="timeline-item timeline-left reveal-left active">
               <div className="timeline-content">
                 <span className="timeline-date">2025</span>
-                <h3>The Confluence Camp First Edition</h3>
+                <h3>The CONFLUENCE CAMP RETREAT First Edition</h3>
                 <p>
                   Organized as the foundation retreat. It gathered over 200 participants for an intense 3 days of prayers, teachings, and fellowship. Lives were transformed, and structural campus fellowships were birthed from this point.
                 </p>
@@ -394,7 +394,7 @@ export default function AboutPage() {
             <div className="timeline-item timeline-right reveal-right active">
               <div className="timeline-content">
                 <span className="timeline-date">2026</span>
-                <h3>The Confluence 2026: Behold the Glory</h3>
+                <h3>The CONFLUENCE CAMP RETREAT 2026: Behold the Glory</h3>
                 <p>
                   The next spiritual milestone. We are positioning for a massive gathering at the Redemption City of God, Ogun State. Focused entirely on seeing the Glory of God and walking in total transformation.
                 </p>

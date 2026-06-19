@@ -80,7 +80,21 @@ export default function AdminPage() {
       setRetreatTheme(state.retreatTheme || "");
       setRetreatTagline(state.retreatTagline || "");
       setRetreatDates(state.retreatDates || "");
-      setRetreatCountdownTarget((state.retreatCountdownTarget || "").split("T")[0]);
+      let targetStr = state.retreatCountdownTarget || "";
+      if (targetStr.includes("+")) {
+        targetStr = targetStr.split("+")[0];
+      } else if (targetStr.endsWith("Z")) {
+        targetStr = targetStr.substring(0, targetStr.length - 1);
+      }
+      if (targetStr && !targetStr.includes("T")) {
+        targetStr = `${targetStr}T09:00`;
+      }
+      const parts = targetStr.split(":");
+      if (parts.length >= 2) {
+        setRetreatCountdownTarget(parts.slice(0, 2).join(":"));
+      } else {
+        setRetreatCountdownTarget(targetStr);
+      }
       setRetreatVenue(state.retreatVenue || "");
       setWhatsappLink(state.whatsappLink || "");
       setRegistrationMode(state.registrationMode || "local");
@@ -134,7 +148,7 @@ export default function AdminPage() {
       retreatTheme,
       retreatTagline,
       retreatDates,
-      retreatCountdownTarget: retreatCountdownTarget.includes("T") ? retreatCountdownTarget : `${retreatCountdownTarget}T09:00:00`,
+      retreatCountdownTarget: retreatCountdownTarget.includes("T") ? (retreatCountdownTarget.split(":").length === 2 ? `${retreatCountdownTarget}:00` : retreatCountdownTarget) : `${retreatCountdownTarget}T09:00:00`,
       retreatVenue,
       whatsappLink,
       registrationMode,
@@ -523,7 +537,7 @@ export default function AdminPage() {
           
           <div className="login-logo">
             <img src="/TBMlogo.png" alt="The Brooks Ministry Logo" style={{ height: '60px', width: 'auto', margin: '0 auto 20px', display: 'block' }} />
-            <h1>Confluence Camp</h1>
+            <h1>The CONFLUENCE CAMP RETREAT</h1>
             <p>Admin Workspace Gateway</p>
           </div>
           
@@ -584,7 +598,7 @@ export default function AdminPage() {
           <div className="admin-header-title">
             <h2 style={{ fontSize: '1.35rem', letterSpacing: '2px', color: 'var(--color-pure-white)', margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img src="/TBMlogo.png" alt="TBM Logo" style={{ height: '30px', width: 'auto' }} />
-              Confluence Camp 2026 <span style={{ background: 'rgba(73, 163, 211, 0.08)', border: '1px solid rgba(73, 163, 211, 0.2)', color: 'var(--color-primary-light)', fontSize: '0.65rem', fontWeight: 600, padding: '3px 10px', borderRadius: 'var(--border-radius-pill)', letterSpacing: '1.5px', textTransform: 'uppercase' }}>CMS Dashboard</span>
+              The CONFLUENCE CAMP RETREAT 2026 <span style={{ background: 'rgba(73, 163, 211, 0.08)', border: '1px solid rgba(73, 163, 211, 0.2)', color: 'var(--color-primary-light)', fontSize: '0.65rem', fontWeight: 600, padding: '3px 10px', borderRadius: 'var(--border-radius-pill)', letterSpacing: '1.5px', textTransform: 'uppercase' }}>CMS Dashboard</span>
             </h2>
           </div>
           <div className="admin-header-nav" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -659,8 +673,8 @@ export default function AdminPage() {
                       <input type="text" value={retreatDates} onChange={(e) => setRetreatDates(e.target.value)} required />
                     </div>
                     <div className="form-group">
-                      <label>Countdown Target ISO (YYYY-MM-DD) *</label>
-                      <input type="text" value={retreatCountdownTarget} placeholder="e.g. 2026-07-23" onChange={(e) => setRetreatCountdownTarget(e.target.value)} required />
+                      <label>Countdown Target Date & Time (Lagos Time) *</label>
+                      <input type="datetime-local" value={retreatCountdownTarget} onChange={(e) => setRetreatCountdownTarget(e.target.value)} required />
                     </div>
                   </div>
                   

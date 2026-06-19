@@ -6,8 +6,12 @@ export default function CountdownTimer({ targetDateStr }) {
   const [timeLeft, setTimeLeft] = useState({ days: "00", hours: "00", minutes: "00", seconds: "00" });
 
   useEffect(() => {
-    if (!targetDateStr) return;
-    const target = new Date(targetDateStr).getTime();
+    // Parse targetDateStr relative to West Africa Time (WAT, UTC+1) by default if no timezone is specified
+    let formattedTargetStr = targetDateStr;
+    if (targetDateStr && !targetDateStr.match(/[Z+\-]\d{2}:?\d{2}$/) && !targetDateStr.endsWith('Z')) {
+      formattedTargetStr = targetDateStr.includes('T') ? `${targetDateStr}+01:00` : `${targetDateStr}T09:00:00+01:00`;
+    }
+    const target = new Date(formattedTargetStr).getTime();
     if (isNaN(target)) return;
 
     const updateTimer = () => {

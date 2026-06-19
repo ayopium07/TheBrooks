@@ -74,7 +74,7 @@ export default function RegisterPage() {
     <div className="page-view active-view" id="view-register">
       <section style={{ padding: '80px 0' }}>
         <div className="container">
-          <h2>Register for The Confluence 2026</h2>
+          <h2>Register for The CONFLUENCE CAMP RETREAT 2026</h2>
           <p style={{ textAlign: 'center', maxWidth: '600px', margin: '-20px auto 40px', color: 'var(--color-text-muted)' }}>
             Attendance is free, but registration is mandatory to secure accommodation, meals, and entry.
           </p>
@@ -90,7 +90,7 @@ export default function RegisterPage() {
                     </svg>
                   </div>
                   <h2 style={{ color: 'var(--color-brooks-blue)', marginBottom: '10px' }}>Registration Received!</h2>
-                  <p style={{ marginTop: '15px', fontSize: '1.05rem', color: '#2c2c3e' }}>Thank you for registering for The Confluence Camp Retreat 2026. Your details have been secured.</p>
+                  <p style={{ marginTop: '15px', fontSize: '1.05rem', color: '#2c2c3e' }}>Thank you for registering for The CONFLUENCE CAMP RETREAT 2026. Your details have been secured.</p>
 
                   <div style={{ background: 'rgba(252,238,33,0.05)', padding: '20px', borderRadius: 'var(--border-radius-md)', border: '1px dashed rgba(10, 102, 194, 0.2)', margin: '30px 0' }}>
                     <h4 style={{ color: 'var(--color-brooks-blue)', marginBottom: '8px', fontWeight: 800 }}>📢 CRITICAL NEXT STEP</h4>
@@ -120,6 +120,7 @@ export default function RegisterPage() {
                           required
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         />
                       </div>
                       <div className="form-group">
@@ -131,6 +132,7 @@ export default function RegisterPage() {
                           required
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         />
                       </div>
                     </div>
@@ -145,6 +147,7 @@ export default function RegisterPage() {
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         />
                       </div>
                       <div className="form-group">
@@ -156,6 +159,7 @@ export default function RegisterPage() {
                           required
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         />
                       </div>
                     </div>
@@ -169,6 +173,7 @@ export default function RegisterPage() {
                         required
                         value={church}
                         onChange={(e) => setChurch(e.target.value)}
+                        style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                       />
                     </div>
 
@@ -180,10 +185,11 @@ export default function RegisterPage() {
                           required
                           value={gender}
                           onChange={(e) => setGender(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         >
-                          <option value="">Select Gender</option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
+                          <option value="" style={{ color: '#1a1a2e' }}>Select Gender</option>
+                          <option value="Male" style={{ color: '#1a1a2e' }}>Male</option>
+                          <option value="Female" style={{ color: '#1a1a2e' }}>Female</option>
                         </select>
                       </div>
                       <div className="form-group">
@@ -193,12 +199,13 @@ export default function RegisterPage() {
                           required
                           value={occupation}
                           onChange={(e) => setOccupation(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         >
-                          <option value="">Select Category</option>
-                          <option value="Student">University Student</option>
-                          <option value="Professional">Young Professional</option>
-                          <option value="Leader">Christian Leader / Pastor</option>
-                          <option value="Other">Other</option>
+                          <option value="" style={{ color: '#1a1a2e' }}>Select Category</option>
+                          <option value="Student" style={{ color: '#1a1a2e' }}>University Student</option>
+                          <option value="Professional" style={{ color: '#1a1a2e' }}>Young Professional</option>
+                          <option value="Leader" style={{ color: '#1a1a2e' }}>Christian Leader / Pastor</option>
+                          <option value="Other" style={{ color: '#1a1a2e' }}>Other</option>
                         </select>
                       </div>
                     </div>
@@ -213,6 +220,7 @@ export default function RegisterPage() {
                           required
                           value={emergencyName}
                           onChange={(e) => setEmergencyName(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         />
                       </div>
                       <div className="form-group">
@@ -224,6 +232,7 @@ export default function RegisterPage() {
                           required
                           value={emergencyPhone}
                           onChange={(e) => setEmergencyPhone(e.target.value)}
+                          style={{ color: '#1a1a2e', background: '#ffffff', border: '1px solid rgba(10,102,194,0.25)' }}
                         />
                       </div>
                     </div>
@@ -231,7 +240,7 @@ export default function RegisterPage() {
                     <div className="form-group">
                       <label style={{ color: 'var(--color-brooks-blue)', fontWeight: 700 }}>Will you require accommodation in Redemption City? *</label>
                       <div className="checkbox-group" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '6px' }}>
-                        <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem' }}>
+                        <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem', color: '#2c2c3e', fontWeight: 500 }}>
                           <input
                             type="radio"
                             name="accommodation-need"
@@ -241,7 +250,7 @@ export default function RegisterPage() {
                             onChange={() => setAccommodation("Yes")}
                           /> Yes, I will require accommodation.
                         </label>
-                        <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem' }}>
+                        <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem', color: '#2c2c3e', fontWeight: 500 }}>
                           <input
                             type="radio"
                             name="accommodation-need"
@@ -254,7 +263,7 @@ export default function RegisterPage() {
                     </div>
 
                     <div className="form-group" style={{ marginTop: '16px' }}>
-                      <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem' }}>
+                      <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem', color: '#2c2c3e', fontWeight: 500 }}>
                         <input
                           type="checkbox"
                           id="reg-volunteer-interest"
