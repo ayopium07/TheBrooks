@@ -1,12 +1,17 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCMS } from '@/context/CMSContext';
 import CountdownTimer from '@/components/CountdownTimer';
+import SpeakerModal from '../components/SpeakerModal';
 
 export default function HomePage() {
   const { state, isHydrated } = useCMS();
+  const [modalSpeaker, setModalSpeaker] = useState(null);
+
+  const openModal = (speaker) => setModalSpeaker(speaker);
+  const closeModal = () => setModalSpeaker(null);
 
   // Helper to split text by paragraphs
   const renderParagraphs = (text, isLead = false) => {
@@ -32,6 +37,12 @@ export default function HomePage() {
     if (hash === "#home") return "/";
     return hash || "/";
   };
+
+  const speakersList = Array.isArray(state.speakers) ? state.speakers : [];
+  const featuredSpeaker = speakersList.find(speaker => /conver|convener/i.test(speaker.role) || speaker.name === "Erioluwa Adeyinka");
+  const otherSpeakers = featuredSpeaker
+    ? speakersList.filter(speaker => speaker.id !== featuredSpeaker.id)
+    : speakersList;
 
   // Prevent flash of static values before local storage loads
   if (!isHydrated) {
@@ -86,12 +97,16 @@ export default function HomePage() {
 
           {/* Right Side: Image Showcase */}
           <div className="hero-image-side">
-            <div className="hero-img-frame">
-              <img src="/hero_camp_retreat.png" alt="The CONFLUENCE CAMP RETREAT" />
+              <div className="hero-img-frame">
+              <img src="/heroo.jpeg" alt="The CONFLUENCE CAMP RETREAT" />
             </div>
           </div>
         </div>
       </section>
+
+      {modalSpeaker && (
+        <SpeakerModal speaker={modalSpeaker} closeModal={closeModal} />
+      )}
 
       {/* Vision Section */}
       <section id="home-vision-sec" className="bg-brooks">
@@ -285,43 +300,65 @@ export default function HomePage() {
       </section>
 
       {/* Speakers Section on Homepage */}
+      {speakersList.length > 0 && (
       <section className="bg-off-white" id="homepage-speakers-sec" style={{ padding: '90px 0', borderBottom: '1px solid rgba(10, 102, 194, 0.05)' }}>
         <div className="container">
-          <h2 style={{ textAlign: 'center', color: 'var(--color-brooks-blue)', marginBottom: '15px' }}>Guest & Worship Ministers</h2>
-          <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 50px', color: 'var(--color-text-muted)' }}>
-            Meet the vessels and ministers prepared to lead us into encounters under the power of the Holy Spirit.
-          </p>
-
-          <div className="speakers-grid" id="cms-speakers-list">
-            {!state.speakers || state.speakers.length === 0 ? (
-              <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '40px' }} className="glass-card">
-                <h3 style={{ color: 'var(--color-sunlight)' }}>Speakers Coming Soon</h3>
-                <p>We are currently finalizing speaker arrangements. Check back shortly for updates.</p>
-              </div>
-            ) : (
-              state.speakers.map(speaker => {
-                const isPlaceholder = !speaker.avatar || (!speaker.avatar.startsWith("http") && !speaker.avatar.startsWith("/") && speaker.avatar.length <= 4);
-                return (
-                  <article className="speaker-card" key={speaker.id}>
-                    <div className="speaker-avatar-wrap">
-                      {isPlaceholder ? (
-                        <svg className="speaker-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '70px', height: '70px', color: 'rgba(252, 238, 33, 0.75)', transition: 'transform 0.4s ease' }}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                        </svg>
-                      ) : (
-                        <img src={speaker.avatar} alt={speaker.name} />
-                      )}
-                    </div>
-                    <h3 className="speaker-name">{speaker.name}</h3>
-                    <p className="speaker-role">{speaker.role}</p>
-                    <p className="speaker-bio">{speaker.bio}</p>
-                  </article>
-                );
-              })
-            )}
+          <div className="ministers-intro">
+            <span className="section-label">Guest & Worship Ministers</span>
+            <h2>Meet those leading us into worship and encounter</h2>
+            <p>These ministers are prepared to carry the retreat atmosphere with powerful praise, teaching, and prophetic ministry.</p>
           </div>
+
+          <>
+            {featuredSpeaker && (
+                <div className="featured-speaker-wrap">
+                  <article className="speaker-card speaker-card-featured" key={featuredSpeaker.id} onClick={() => openModal(featuredSpeaker)} style={{ cursor: 'pointer' }}>
+                    <div className="featured-speaker-grid">
+                      <div className="speaker-avatar-wrap speaker-avatar-large">
+                        {featuredSpeaker.avatar ? (
+                          <img src={featuredSpeaker.avatar} alt={featuredSpeaker.name} />
+                        ) : (
+                          <svg className="speaker-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '90px', height: '90px', color: 'rgba(252, 238, 33, 0.9)', transition: 'transform 0.4s ease' }}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                          </svg>
+                        )}
+                      </div>
+                      <div className="featured-speaker-copy">
+                        <span className="featured-badge">Convener</span>
+                        <h3 className="speaker-name">{featuredSpeaker.name}</h3>
+                        <p className="speaker-role">{featuredSpeaker.role}</p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              )}
+
+              <div className="speakers-grid" id="cms-speakers-list">
+                {otherSpeakers.map(speaker => {
+                  const isPlaceholder = !speaker.avatar || (!speaker.avatar.startsWith("http") && !speaker.avatar.startsWith("/") && speaker.avatar.length <= 4);
+                  return (
+                    <article className="speaker-card" key={speaker.id} onClick={() => openModal(speaker)} style={{ cursor: 'pointer' }}>
+                      <div className="speaker-avatar-wrap">
+                        {isPlaceholder ? (
+                          <svg className="speaker-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '70px', height: '70px', color: 'rgba(252, 238, 33, 0.75)', transition: 'transform 0.4s ease' }}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                          </svg>
+                        ) : (
+                          <img src={speaker.avatar} alt={speaker.name} />
+                        )}
+                      </div>
+                      <div className="card-body">
+                        <h3 className="speaker-name">{speaker.name}</h3>
+                        <p className="speaker-role">{speaker.role}</p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </>
         </div>
       </section>
+      )}
 
       {/* Retreat Portals & Directories */}
       <section className="bg-off-white" style={{ borderBottom: 'none' }}>

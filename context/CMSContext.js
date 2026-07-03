@@ -22,24 +22,73 @@ const DEFAULT_CMS_STATE = {
   speakers: [
     {
       id: "spk-1",
-      name: "To Be Revealed",
-      role: "Guest Minister",
-      avatar: "",
-      bio: "Loading..."
+      name: "Erioluwa Adeyinka",
+      role: "Converner",
+      avatar: "/Eri.JPG",
+      bio: "Convener of The Confluence Camp Retreat 2026."
     },
     {
       id: "spk-2",
-      name: "To Be Revealed",
-      role: "Worship Minister",
-      avatar: "",
-      bio: "Loading..."
+      name: "John Buoye",
+      role: "Guest Minister",
+      avatar: "/John.JPG",
+      bio: "Guest Minister at The Confluence Camp Retreat 2026."
     },
     {
       id: "spk-3",
-      name: "To Be Revealed",
-      role: "Retreat Convener",
+      name: "Samuel Peniel",
+      role: "Guest Minister",
+      avatar: "/Samuel.jpg",
+      bio: "Guest Minister at The Confluence Camp Retreat 2026."
+    },
+    {
+      id: "spk-4",
+      name: "Prince Ben David",
+      role: "Guest Minister",
+      avatar: "/Ben-David.jpg",
+      bio: "Guest Minister at The Confluence Camp Retreat 2026."
+    },
+    {
+      id: "spk-5",
+      name: "Doyinsola Owolabi",
+      role: "Guest Minister",
       avatar: "",
-      bio: "Loading..."
+      bio: "Guest Minister at The Confluence Camp Retreat 2026."
+    },
+    {
+      id: "spk-6",
+      name: "Oluwanifemi Dahunsi",
+      role: "Guest Minister",
+      avatar: "/Oluwanifemi Dahunsi.jpg",
+      bio: "Guest Minister at The Confluence Camp Retreat 2026."
+    },
+    {
+      id: "spk-7",
+      name: "Joseph Ajayi",
+      role: "Guest Minister",
+      avatar: "/Ajayi.jpg",
+      bio: "Guest Minister at The Confluence Camp Retreat 2026."
+    },
+    {
+      id: "spk-8",
+      name: "John Teidi",
+      role: "Worship Minister",
+      avatar: "/John Teidi.JPG",
+      bio: "Worship Minister at The Confluence Camp Retreat 2026."
+    },
+    {
+      id: "spk-9",
+      name: "Solomon Adebayo",
+      role: "Worship Minister",
+      avatar: "",
+      bio: "Worship Minister at The Confluence Camp Retreat 2026."
+    },
+    {
+      id: "spk-10",
+      name: "Daniel Awodele",
+      role: "Worship Minister",
+      avatar: "/Daniel.jpg",
+      bio: "Worship Minister at The Confluence Camp Retreat 2026."
     }
   ],
 
@@ -190,6 +239,30 @@ export function CMSProvider({ children }) {
           merged.retreatCountdownTarget = DEFAULT_CMS_STATE.retreatCountdownTarget;
           localStorage.setItem("confluence_cms_state", JSON.stringify(merged));
         }
+
+        // Replace stale placeholder speaker data with the latest minister list
+        if (Array.isArray(merged.speakers) && merged.speakers.length > 0) {
+          const allPlaceholders = merged.speakers.every(speaker => {
+            return !speaker.name || /to be revealed|loading/i.test(speaker.name);
+          });
+          if (allPlaceholders) {
+            merged.speakers = DEFAULT_CMS_STATE.speakers;
+            localStorage.setItem("confluence_cms_state", JSON.stringify(merged));
+          } else {
+            // Fill missing avatars from the default speaker list for existing names.
+            merged.speakers = merged.speakers.map(speaker => {
+              const defaultSpeaker = DEFAULT_CMS_STATE.speakers.find(ds => ds.name === speaker.name);
+              if (!defaultSpeaker) return speaker;
+              return {
+                ...defaultSpeaker,
+                ...speaker,
+                avatar: speaker.avatar || defaultSpeaker.avatar,
+              };
+            });
+            localStorage.setItem("confluence_cms_state", JSON.stringify(merged));
+          }
+        }
+
         setState(merged);
       } else {
         localStorage.setItem("confluence_cms_state", JSON.stringify(DEFAULT_CMS_STATE));
