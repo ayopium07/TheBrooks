@@ -521,6 +521,45 @@ export default function AdminPage() {
       .admin-action-btn:hover {
         background: rgba(255,255,255,0.15);
       }
+      @media (max-width: 991px) {
+        .admin-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .admin-sidebar {
+          flex-direction: row;
+          overflow-x: auto;
+          padding: 10px;
+        }
+        .admin-menu-btn {
+          white-space: nowrap;
+        }
+        .admin-header-wrap {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+        .admin-header-title h2 {
+          font-size: 1.1rem !important;
+          flex-direction: column;
+        }
+        .login-card {
+          padding: 40px 20px !important;
+        }
+        .admin-content-card {
+          padding: 20px !important;
+        }
+        .form-row {
+          display: flex !important;
+          flex-direction: column !important;
+        }
+        .admin-layout-body {
+          padding: 15px !important;
+        }
+        .admin-table-container {
+          overflow-x: auto;
+          display: block;
+        }
+      }
     ` }} />
   );
 

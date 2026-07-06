@@ -52,7 +52,7 @@ const DEFAULT_CMS_STATE = {
       id: "spk-5",
       name: "Doyinsola Owolabi",
       role: "Guest Minister",
-      avatar: "",
+      avatar: "/doyiin.jpeg",
       bio: "Guest Minister at The Confluence Camp Retreat 2026."
     },
     {
@@ -80,7 +80,7 @@ const DEFAULT_CMS_STATE = {
       id: "spk-9",
       name: "Solomon Adebayo",
       role: "Worship Minister",
-      avatar: "",
+      avatar: "/solomon.jpeg",
       bio: "Worship Minister at The Confluence Camp Retreat 2026."
     },
     {

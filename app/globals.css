@@ -4446,3 +4446,88 @@ footer::before {
     max-height: 60vh;
   }
 }
+
+/* Hero Section Mobile Fixes */
+@media (max-width: 991px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero-image-side {
+    order: 2;
+  }
+  .hero-text-side {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: auto;
+    padding: 130px 0 60px;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 15px;
+  }
+  .hero-title span {
+    font-size: 0.4em;
+    letter-spacing: 4px;
+    margin-top: 5px;
+  }
+  .hero-meta {
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0 32px;
+  }
+  .hero-meta-item {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-text-side .btn-group {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  .hero-text-side .btn-group .btn {
+    width: 100%;
+  }
+  .hero-tag {
+    font-size: 0.65rem;
+    padding: 6px 12px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .countdown-container {
+    display: grid !important;
+    gap: 10px !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .countdown-box {
+    padding: 10px 4px;
+    min-width: 0;
+  }
+  .countdown-val {
+    font-size: 1.4rem;
+  }
+  .countdown-label {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-container {
+    gap: 6px !important;
+  }
+  .countdown-val {
+    font-size: 1.25rem;
+  }
+  .countdown-label {
+    font-size: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+}

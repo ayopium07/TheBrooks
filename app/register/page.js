@@ -69,6 +69,7 @@ export default function RegisterPage() {
   }
 
   const isLocalMode = state.registrationMode === "local";
+  const isRegistrationClosed = true;
 
   return (
     <div className="page-view active-view" id="view-register">
@@ -80,7 +81,24 @@ export default function RegisterPage() {
           </p>
 
           <div className="form-container">
-            {submitted ? (
+            {isRegistrationClosed ? (
+              <div id="registration-closed-panel">
+                <div className="glass-card" style={{ border: 'none', background: '#F8F7F4', textAlign: 'center', padding: '60px 30px' }}>
+                  <div className="closed-icon" style={{ margin: '0 auto 20px', background: 'rgba(239, 83, 80, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', color: '#ef5350', width: '70px', height: '70px' }}>
+                    <svg width="34" height="34" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <h3 style={{ color: 'var(--color-brooks-blue)', marginBottom: '15px', fontFamily: 'var(--font-heading)', fontSize: '1.8rem', fontWeight: 800 }}>Registration is Closed</h3>
+                  <p style={{ fontSize: '1.1rem', color: '#2c2c3e', maxWidth: '500px', margin: '0 auto 25px', lineHeight: 1.6 }}>
+                    We have reached maximum capacity and registration for The CONFLUENCE CAMP RETREAT 2026 has officially closed. We look forward to seeing you at our next event!
+                  </p>
+                  <a href={state.whatsappLink} className="btn btn-primary" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: '#25D366', color: 'white', boxShadow: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    💬 Join our WhatsApp Community
+                  </a>
+                </div>
+              </div>
+            ) : submitted ? (
               /* Success Redirection Panel */
               <div id="registration-success-panel">
                 <div className="glass-card success-screen" style={{ border: 'none', background: '#F8F7F4' }}>
