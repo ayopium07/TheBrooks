@@ -69,7 +69,7 @@ export default function RegisterPage() {
   }
 
   const isLocalMode = state.registrationMode === "local";
-  const isRegistrationClosed = true;
+  const isRegistrationClosed = false;
 
   return (
     <div className="page-view active-view" id="view-register">

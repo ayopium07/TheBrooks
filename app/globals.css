@@ -4529,5 +4529,10 @@ footer::before {
   .countdown-label {
     font-size: 0.5rem;
     letter-spacing: 0.5px;
-  }
+    }
+}
+
+.force-white-bold {
+  color: #ffffff !important;
+  font-weight: bold !important;
 }

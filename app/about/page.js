@@ -176,7 +176,7 @@ export default function AboutPage() {
               <h3 style={{ color: '#ffffff', fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 800, marginBottom: '14px', lineHeight: 1.25 }}>
                 Identify
               </h3>
-              <p style={{ color: '#ffffff', fontSize: '1.05rem', fontWeight: 500, lineHeight: 1.75, margin: 0 }}>
+              <p className="force-white-bold" style={{ fontSize: '1.05rem', lineHeight: 1.75, margin: 0 }}>
                 Spotting the potential in believers across various professional and social walks of life.
               </p>
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--color-sunlight), transparent)' }}></div>
@@ -198,7 +198,7 @@ export default function AboutPage() {
               <h3 style={{ color: '#ffffff', fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 800, marginBottom: '14px', lineHeight: 1.25 }}>
                 Empower
               </h3>
-              <p style={{ color: '#ffffff', fontSize: '1.05rem', fontWeight: 500, lineHeight: 1.75, margin: 0 }}>
+              <p className="force-white-bold" style={{ fontSize: '1.05rem', lineHeight: 1.75, margin: 0 }}>
                 Providing the tools, spiritual depth, and skills needed to lead with authority.
               </p>
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--color-sunlight), transparent)' }}></div>
@@ -220,7 +220,7 @@ export default function AboutPage() {
               <h3 style={{ color: '#ffffff', fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 800, marginBottom: '14px', lineHeight: 1.25 }}>
                 Deploy
               </h3>
-              <p style={{ color: '#ffffff', fontSize: '1.05rem', fontWeight: 500, lineHeight: 1.75, margin: 0 }}>
+              <p className="force-white-bold" style={{ fontSize: '1.05rem', lineHeight: 1.75, margin: 0 }}>
                 Sending out visionaries, pioneers, and frontliners to the edges of cultural impact.
               </p>
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--color-sunlight), transparent)' }}></div>
@@ -322,7 +322,7 @@ export default function AboutPage() {
               <h3 style={{ color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>
                 Equipping
               </h3>
-              <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1rem', lineHeight: '1.7', margin: 0 }}>
+              <p className="force-white-bold" style={{ fontSize: '1rem', lineHeight: '1.7', margin: 0 }}>
                 Arming the generation with scriptural truth and practical leadership competence.
               </p>
             </div>
@@ -337,7 +337,7 @@ export default function AboutPage() {
               <h3 style={{ color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>
                 Nurturing
               </h3>
-              <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1rem', lineHeight: '1.7', margin: 0 }}>
+              <p className="force-white-bold" style={{ fontSize: '1rem', lineHeight: '1.7', margin: 0 }}>
                 Providing the spiritual environment where faith and character can flourish.
               </p>
             </div>
@@ -352,7 +352,7 @@ export default function AboutPage() {
               <h3 style={{ color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>
                 Discipling
               </h3>
-              <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1rem', lineHeight: '1.7', margin: 0 }}>
+              <p className="force-white-bold" style={{ fontSize: '1rem', lineHeight: '1.7', margin: 0 }}>
                 Hands-on discipleship to ensure the DNA of Christ is replicated globally.
               </p>
             </div>

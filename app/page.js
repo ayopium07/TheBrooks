@@ -165,7 +165,7 @@ export default function HomePage() {
               </div>
               <div className="announcement-content">
                 <div className="announcement-body">
-                  <p id="cms-announcement-text">{state.announcementText}</p>
+                  <p id="cms-announcement-text" className="force-white-bold">{state.announcementText}</p>
                 </div>
                 <div className="announcement-action">
                   <Link href={getCtaLink(state.announcementCtaHash)} className="btn btn-primary" id="cms-announcement-cta">
