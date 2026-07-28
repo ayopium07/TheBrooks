@@ -15,7 +15,7 @@ export default function Footer() {
             <img src="/Asset 8mom.png" alt="The Brooks Ministry Logo" className="logo-image" style={{ height: '42px' }} />
           </Link>
           <p className="footer-tagline">
-            The CONFLUENCE CAMP RETREAT is convened by <strong>The Brooks Ministry</strong>. We are dedicated to raising young believers in spiritual depth, alignment, and kingdom obedience.
+            <strong>The Brooks Ministry</strong> is a non-denominational Christian movement dedicated to raising frontliners, pioneers, and kingdom-sent agents of transformation for this generation.
           </p>
           <div className="social-links">
             <a href="https://www.instagram.com/tbm_theconfluence?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="footer-social-link" target="_blank" rel="noopener noreferrer">
@@ -44,26 +44,27 @@ export default function Footer() {
           <ul className="footer-links">
             <li><Link href="/">Home</Link></li>
             <li><Link href="/about">About</Link></li>
-            <li><Link href="/volunteer">Volunteer Portal</Link></li>
-            <li><Link href="/partners">Support a Camper</Link></li>
-            <li><Link href="/contact">Contact Support</Link></li>
+            <li><Link href="/confluence">The Confluence</Link></li>
+            <li><Link href="/volunteer">Volunteer</Link></li>
+            <li><Link href="/partners">Partner With Us</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="footer-title">Logistics Hub</h3>
+          <h3 className="footer-title">Explore</h3>
           <ul className="footer-links">
-            <li><Link href="/experience">Retreat Experience</Link></li>
-            <li><Link href="/#homepage-speakers-sec">Speakers</Link></li>
-            <li><Link href="/faq">Frequently Asked Questions</Link></li>
-            <li><Link href="/register">Register for Retreat</Link></li>
+            <li><Link href="/confluence">Confluence Camp Retreat</Link></li>
+            <li><Link href="/about#about-programs-sec">Past Programs</Link></li>
+            <li><Link href="/volunteer">Service Departments</Link></li>
+            <li><Link href="/partners">Partnership Tiers</Link></li>
           </ul>
         </div>
       </div>
 
       <div className="container footer-bottom">
-        <p>© 2026 The Brooks Ministry. The CONFLUENCE CAMP RETREAT 2026. All rights reserved.</p>
-        <p>Theme: {state.retreatTheme} | {state.retreatDates}</p>
+        <p>© 2026 The Brooks Ministry. All rights reserved.</p>
+        <p>Raising frontliners &amp; pioneers for the Kingdom of God.</p>
       </div>
     </footer>
   );

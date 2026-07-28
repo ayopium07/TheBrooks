@@ -51,32 +51,14 @@ export default function PartnersPage() {
       {/* Redesigned Partners Hero Section */}
       <section className="partners-hero-section">
         <div className="container">
-          <div className="partners-hero-grid">
-            <div className="partners-hero-text reveal-left active">
-              <span className="partners-tag">✦ SPONSOR A CAMPER</span>
-              <h1>Partner with the Vision</h1>
-              <p className="about-lead">Support the retreat financially. Help us provide free feeding, lodging, and materials to university campers.</p>
-              <p className="about-lead" style={{ fontSize: '1rem', opacity: 0.88, marginTop: '14px' }}>
-                We believe that financial barriers should never stand in the way of a spiritual encounter. Through the generosity of our partners, we host over 500 campers completely free of charge. Your seed builds the altar.
+          <div className="reveal active" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <div className="partners-hero-text">
+              <span className="partners-tag" style={{ margin: '0 auto 20px' }}>✦ PARTNER WITH THE MINISTRY</span>
+              <h1>Partner with The Vision</h1>
+              <p className="about-lead" style={{ margin: '0 auto' }}>Support The Brooks Ministry and help us carry the Gospel further — through giving, sponsoring programs, and providing facilities.</p>
+              <p className="about-lead" style={{ fontSize: '1rem', opacity: 0.88, margin: '14px auto 0' }}>
+                The Brooks Ministry operates as a non-profit movement dedicated to raising a generation in fire, character, and alignment. Your partnership helps sustain our evangelistic outreaches, discipleship programs, and wide-reaching media initiatives that carry the heart of the Father to the nations.
               </p>
-            </div>
-            <div className="partners-hero-showcase reveal-right active">
-              <div className="partners-stats-card">
-                <div className="stat-item">
-                  <span className="stat-number">500+</span>
-                  <span className="stat-label">Sponsorship Targets</span>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item">
-                  <span className="stat-number">100%</span>
-                  <span className="stat-label">Free Camper Lodging & Food</span>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item">
-                  <span className="stat-number">₦15K</span>
-                  <span className="stat-label">Covers One Camper</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -101,7 +83,7 @@ export default function PartnersPage() {
               ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src="/Asset 8mom.png" alt="The Brooks Ministry Logo" style={{ width: '100%', maxWidth: '320px', opacity: 0.9, objectFit: 'contain' }} />
+              <img src="/TBMlogo.png" alt="The Brooks Ministry Logo" style={{ width: '100%', maxWidth: '320px', opacity: 0.9, objectFit: 'contain' }} />
             </div>
           </div>
         </div>
@@ -121,33 +103,43 @@ export default function PartnersPage() {
           </div>
 
           <div className="partners-tiers-grid reveal active">
-            {/* Sponsor a Camper */}
+            {/* Give / Tithe */}
             <div className="tier-card">
-              <div className="tier-icon-box">🎓</div>
-              <h3 className="tier-title">Sponsor a Camper</h3>
-              <p className="tier-desc">Cover the logistical cost of accommodation, 2 daily meals, and comprehensive retreat manuals for university students.</p>
+              <div className="tier-icon-box">💌</div>
+              <h3 className="tier-title">Give / Tithe</h3>
+              <p className="tier-desc">Support the ministry through regular financial giving or tithes. Your offering fuels Sunday services, campus outreaches, and kingdom operations.</p>
               <div className="tier-amount">
-                ₦15,000 <span className="tier-amount-sub">/ Camper</span>
+                Any Amount <span className="tier-amount-sub">/ One-time or Monthly</span>
               </div>
             </div>
 
-            {/* Support Welfare */}
+            {/* Sponsor a Program */}
             <div className="tier-card">
-              <div className="tier-icon-box">🍲</div>
-              <h3 className="tier-title">Support the Welfare</h3>
-              <p className="tier-desc">Contribute directly to the purchase of raw foodstuffs, kitchen operations, utility water, and campus outreach setups.</p>
+              <div className="tier-icon-box">🎟️</div>
+              <h3 className="tier-title">Sponsor a Program</h3>
+              <p className="tier-desc">Sponsor an event — the Confluence Camp Retreat, a campus outreach, a Bible study series, or a worship night. Your seed makes it possible.</p>
               <div className="tier-amount">
-                Custom <span className="tier-amount-sub">Welfare Offering</span>
+                Custom <span className="tier-amount-sub">Program Pledge</span>
               </div>
             </div>
 
-            {/* General Support */}
+            {/* Facility & Equipment */}
+            <div className="tier-card">
+              <div className="tier-icon-box">🏗️</div>
+              <h3 className="tier-title">Facility &amp; Equipment</h3>
+              <p className="tier-desc">Sponsor a venue, sound equipment, music instruments, livestream setup, printing, or location payment for any ministry program.</p>
+              <div className="tier-amount">
+                Custom <span className="tier-amount-sub">In-Kind or Cash</span>
+              </div>
+            </div>
+
+            {/* General Partnership */}
             <div className="tier-card">
               <div className="tier-icon-box">🤝</div>
-              <h3 className="tier-title">General Support</h3>
-              <p className="tier-desc">Establish recurring support channels for long-term operations, media broadcasts, facilities rentals, and future camps.</p>
+              <h3 className="tier-title">General Partnership</h3>
+              <p className="tier-desc">Establish ongoing support through annual or monthly pledges for long-term ministry operations, media broadcasts, and kingdom expansion.</p>
               <div className="tier-amount">
-                Annual / Monthly <span className="tier-amount-sub">Pledge Details</span>
+                Annual / Monthly <span className="tier-amount-sub">Pledge</span>
               </div>
             </div>
           </div>
@@ -257,9 +249,10 @@ export default function PartnersPage() {
                       style={{ borderColor: 'rgba(10, 102, 194, 0.2)', color: '#2c2c3e', background: 'rgba(255, 255, 255, 0.85)' }}
                     >
                       <option value="">Select Option</option>
-                      <option value="Sponsor Camper">Sponsor Camper (₦15,000 / camper)</option>
-                      <option value="Welfare Contribution">Welfare Contribution</option>
-                      <option value="General Support">General Support</option>
+                      <option value="Give / Tithe">Give / Tithe (One-time or Monthly)</option>
+                      <option value="Sponsor a Program">Sponsor a Program or Event</option>
+                      <option value="Facility & Equipment">Facility &amp; Equipment Sponsorship</option>
+                      <option value="General Partnership">General Partnership (Annual/Monthly)</option>
                     </select>
                   </div>
 

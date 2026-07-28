@@ -1,456 +1,347 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useCMS } from '@/context/CMSContext';
-import CountdownTimer from '@/components/CountdownTimer';
-import SpeakerModal from '../components/SpeakerModal';
 
 export default function HomePage() {
   const { state, isHydrated } = useCMS();
-  const [modalSpeaker, setModalSpeaker] = useState(null);
 
-  const openModal = (speaker) => setModalSpeaker(speaker);
-  const closeModal = () => setModalSpeaker(null);
-
-  // Helper to split text by paragraphs
-  const renderParagraphs = (text, isLead = false) => {
-    if (!text) return null;
-    return text.split("\n\n").filter(p => p.trim() !== "").map((p, idx) => (
-      <p
-        key={idx}
-        className={isLead ? "about-lead" : ""}
-        style={isLead ? {} : { fontFamily: "var(--font-body)", fontSize: "1.15rem", lineHeight: "1.75", color: "#2c2c3e", margin: "0 0 15px 0" }}
-        dangerouslySetInnerHTML={{ __html: p.trim().replace(/\n/g, '<br>') }}
-      />
-    ));
-  };
-
-  const getCtaLink = (hash) => {
-    if (hash === "#register") return "/register";
-    if (hash === "#volunteer") return "/volunteer";
-    if (hash === "#partners") return "/partners";
-    if (hash === "#about") return "/about";
-    if (hash === "#contact") return "/contact";
-    if (hash === "#experience") return "/experience";
-    if (hash === "#faq") return "/faq";
-    if (hash === "#home") return "/";
-    return hash || "/";
-  };
-
-  const speakersList = Array.isArray(state.speakers) ? state.speakers : [];
-  const featuredSpeaker = speakersList.find(speaker => /conver|convener/i.test(speaker.role) || speaker.name === "Erioluwa Adeyinka");
-  const otherSpeakers = featuredSpeaker
-    ? speakersList.filter(speaker => speaker.id !== featuredSpeaker.id)
-    : speakersList;
-
-  // Prevent flash of static values before local storage loads
   if (!isHydrated) {
     return <div style={{ minHeight: '100vh', background: 'var(--color-brooks-blue)' }}></div>;
   }
 
   return (
     <div className="page-view active-view" id="view-home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-grid">
-          {/* Left Side: Text and Countdown Content */}
-          <div className="hero-text-side">
-            <h1 className="hero-title" id="cms-hero-title">
-              {state.retreatTagline || "The CONFLUENCE CAMP RETREAT 2026"}
+
+      {/* ── Hero ── */}
+      <section className="tbm-hero">
+
+        {/* Dot-grid texture */}
+        <div className="tbm-hero-texture" aria-hidden="true" />
+
+        {/* Logo — fills the right side like a built-in background image */}
+        <img
+          src="/TBMlogo.png"
+          alt="The Brooks"
+          className="tbm-hero-logo"
+        />
+
+        {/* Text — left side only */}
+        <div className="tbm-hero-inner">
+          <div className="tbm-hero-left">
+
+            <div className="tbm-eyebrow-pill">
+              <span className="tbm-eyebrow-pulse" aria-hidden="true" />
+              A Kingdom Movement
+            </div>
+
+            <h1 className="tbm-title">
+              <span className="tbm-title-the">The</span>
+              <span className="tbm-title-brooks">Brooks</span>
             </h1>
-            <div className="hero-tag" id="cms-hero-tag">Theme: {state.retreatTheme}</div>
 
-            {/* Live Countdown Timer */}
-            <CountdownTimer targetDateStr={state.retreatCountdownTarget} />
+            <div className="tbm-tagline-wrap">
+              <div className="tbm-gold-bar" aria-hidden="true" />
+              <p className="tbm-tagline">
+                Raising frontliners, pioneers, and kingdom-sent agents
+                of transformation for this generation and the ones to come.
+              </p>
+            </div>
 
-            <div className="hero-meta">
-              <div className="hero-meta-item">
-                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span id="cms-meta-dates">{state.retreatDates}</span>
-              </div>
-              <div className="hero-meta-item">
-                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span id="cms-meta-venue">{state.retreatVenue}</span>
-              </div>
-              <div className="hero-meta-item">
-                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>Free Registration</span>
+            <div className="tbm-service-info">
+              <span className="tbm-service-badge">Sunday Service</span>
+              <div className="tbm-service-rows">
+                <div className="tbm-service-row">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>[Time — To Be Updated]</span>
+                </div>
+                <div className="tbm-service-divider" aria-hidden="true" />
+                <div className="tbm-service-row">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>[Location — To Be Updated]</span>
+                </div>
               </div>
             </div>
 
-            <div className="btn-group">
-              <Link href="/register" className="btn btn-primary">Register Now</Link>
-              <Link href="/volunteer" className="btn btn-secondary">Volunteer</Link>
+            <div className="tbm-cta-row">
+              <Link href="/about" className="tbm-btn-solid">About The Brooks</Link>
+              <Link href="/partners" className="tbm-btn-outline">Partner With Us</Link>
             </div>
-          </div>
 
-          {/* Right Side: Image Showcase */}
-          <div className="hero-image-side">
-              <div className="hero-img-frame">
-              <img src="/heroo.jpeg" alt="The CONFLUENCE CAMP RETREAT" />
-            </div>
           </div>
         </div>
       </section>
 
-      {modalSpeaker && (
-        <SpeakerModal speaker={modalSpeaker} closeModal={closeModal} />
-      )}
 
-      {/* Vision Section */}
+      {/* ── Vision Section ── */}
       <section id="home-vision-sec" className="bg-brooks">
         <div className="container">
           <div className="vision-grid">
             <div className="reveal-left active">
-              <h2 style={{ textAlign: 'left', marginBottom: '24px', paddingBottom: '10px' }} id="cms-home-vision-header">
-                {state.homeVisionHeader}
+              <h2 style={{ textAlign: 'left', marginBottom: '24px', paddingBottom: '10px' }}>
+                Who We Are
               </h2>
-              <div style={{ width: '60px', height: '2px', background: 'var(--color-sunlight)', marginBottom: '30px' }}></div>
-              <div id="cms-home-vision-text">
-                {renderParagraphs(state.homeVisionText)}
-              </div>
+              <div style={{ width: '60px', height: '2px', background: 'var(--color-sunlight)', marginBottom: '30px' }} />
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.15rem', lineHeight: '1.75', color: 'rgba(255,255,255,0.88)', margin: '0 0 15px 0' }}>
+                The Brooks Ministry is a non-denominational Christian ministry with a singular focus: raising frontliners and pioneers for the Kingdom of God.
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.15rem', lineHeight: '1.75', color: 'rgba(255,255,255,0.88)', margin: '0 0 15px 0' }}>
+                We exist to see a generation of young people who are not merely church-attending believers, but spiritually activated, doctrinally grounded, and kingdom-sent agents of transformation.
+              </p>
               <blockquote className="featured-quote">
-                <span id="cms-home-vision-quote">{state.homeVisionQuote}</span> <br />
-                <span id="cms-home-vision-quote-ref" style={{
-                  fontSize: '0.9rem',
-                  fontFamily: 'var(--font-body)',
-                  fontWeight: 600,
-                  color: 'var(--color-sunlight)',
-                  display: 'block',
-                  marginTop: '10px'
-                }}>{state.homeVisionQuoteRef}</span>
+                <span>&ldquo;To see a generation of spiritually active, doctrinally grounded, and purpose-driven young believers deployed as kingdom-sent agents of transformation across the nations.&rdquo;</span>
+                <span style={{ fontSize: '0.9rem', fontFamily: 'var(--font-body)', fontWeight: 600, color: 'var(--color-sunlight)', display: 'block', marginTop: '10px' }}>
+                  — The Brooks Mandate
+                </span>
               </blockquote>
             </div>
 
             <div className="glass-card reveal-right active" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px' }}>
               <h3 style={{ color: 'var(--color-sunlight)', borderBottom: '1px solid var(--color-border)', paddingBottom: '10px' }}>
-                Retreat Details
+                What We Do
               </h3>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                <li><strong>🗓 Dates:</strong> {state.retreatDates}</li>
-                <li><strong>📍 Venue:</strong> {state.retreatVenue.split(',')[0]}</li>
-                <li><strong>💰 Fee:</strong> 100% Free</li>
-                <li><strong>🏠 Accommodation:</strong> Provided (Free)</li>
-                <li><strong>🍲 Feeding:</strong> Provided (Free)</li>
+                <li>⛪ <strong>Sunday Services</strong> — Weekly gatherings built on prayer and the Word</li>
+                <li>📖 <strong>Bible Study Groups</strong> — Deep-dive scriptural grounding</li>
+                <li>🎓 <strong>Campus Outreaches</strong> — Taking the Gospel to universities</li>
+                <li>⛺ <strong>Annual Camp Retreat</strong> — The Confluence Camp Retreat</li>
+                <li>🌍 <strong>Kingdom Missions</strong> — Local evangelism and discipleship</li>
               </ul>
-              <Link href="/register" className="btn btn-primary" style={{ marginTop: '20px', width: '100%', textAlign: 'center' }}>
-                Register For Free
+              <Link href="/about" className="btn btn-primary" style={{ marginTop: '10px', width: '100%', textAlign: 'center' }}>
+                Learn More About Us
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Dynamic Announcements Section */}
-      {state.announcementActive && (
-        <section className="bg-off-white" id="announcements-sec-wrap">
-          <div className="container">
-            <div className="announcement-card animate-pulse-slow">
-              <div className="announcement-header">
-                <span className="announcement-badge">
-                  <span className="pulse-dot"></span>
-                  Latest Announcement
-                </span>
-              </div>
-              <div className="announcement-content">
-                <div className="announcement-body">
-                  <p id="cms-announcement-text" className="force-white-bold">{state.announcementText}</p>
-                </div>
-                <div className="announcement-action">
-                  <Link href={getCtaLink(state.announcementCtaHash)} className="btn btn-primary" id="cms-announcement-cta">
-                    {state.announcementCtaText}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* ── Why The Brooks ── */}
+      <section className="wtb-section">
 
-      {/* Why Attend Section */}
-      <section className="bg-brooks">
-        <div className="container">
-          <h2>Why Attend The CONFLUENCE CAMP RETREAT?</h2>
-          <p style={{ textAlign: 'center', maxWidth: '680px', margin: '-20px auto 50px', color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-            The CONFLUENCE CAMP RETREAT is for those who desire more than inspiration; it is for those seeking genuine transformation.
+        {/* Section header */}
+        <div className="wtb-header">
+          <div className="wtb-header-eyebrow">
+            <span className="wtb-eyebrow-line" aria-hidden="true" />
+            Our Values
+            <span className="wtb-eyebrow-line" aria-hidden="true" />
+          </div>
+          <h2 className="wtb-heading">Why The Brooks?</h2>
+          <p className="wtb-subheading">
+            We don't just build a church — we build an army of frontliners
+            carrying faith into every sphere of society.
           </p>
+        </div>
 
-          <div className="why-attend-grid">
-            <div className="reason-item glass-card reveal-scale active">
-              <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+        {/* Cards grid */}
+        <div className="container">
+          <div className="wtb-grid">
+            {[
+              {
+                num: "01",
+                icon: "M13 10V3L4 14h7v7l9-11h-7z",
+                title: "Encounter God",
+                desc: "Encounter God in a deeper and more personal way — beyond the ordinary into the extraordinary.",
+              },
+              {
+                num: "02",
+                icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.232.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+                title: "Biblical Teaching",
+                desc: "Receive biblical teaching that strengthens your faith and daily walk with God.",
+              },
+              {
+                num: "03",
+                icon: "M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3",
+                title: "Worship & Prayer",
+                desc: "Experience powerful moments of worship, prayer, and spiritual impartation.",
+              },
+              {
+                num: "04",
+                icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7",
+                title: "Purpose & Destiny",
+                desc: "Gain clarity concerning purpose, calling, and the direction God has for your life.",
+              },
+              {
+                num: "05",
+                icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+                title: "Kingdom Community",
+                desc: "Connect with a community of believers who share a genuine hunger for God.",
+              },
+              {
+                num: "06",
+                icon: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z",
+                title: "Leave Transformed",
+                desc: "Leave refreshed, empowered, and equipped for the next season of your journey with God.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="wtb-card">
+                <div className="wtb-card-top">
+                  <span className="wtb-card-num">{item.num}</span>
+                  <div className="wtb-card-icon-wrap">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="wtb-card-title">{item.title}</h3>
+                <p className="wtb-card-desc">{item.desc}</p>
               </div>
-              <div>
-                <h3 className="reason-title">Encounter God</h3>
-                <p>Encounter God in a deeper and more personal way — beyond the ordinary into the extraordinary.</p>
-              </div>
-            </div>
-
-            <div className="reason-item glass-card reveal-scale active">
-              <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.232.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="reason-title">Biblical Teaching</h3>
-                <p>Receive biblical teaching that strengthens your faith and daily walk with God.</p>
-              </div>
-            </div>
-
-            <div className="reason-item glass-card reveal-scale active">
-              <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="reason-title">Worship & Prayer</h3>
-                <p>Experience powerful moments of worship, prayer, and spiritual impartation.</p>
-              </div>
-            </div>
-
-            <div className="reason-item glass-card reveal-scale active">
-              <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="reason-title">Purpose & Destiny</h3>
-                <p>Gain clarity concerning purpose, calling, and the direction God has for your life.</p>
-              </div>
-            </div>
-
-            <div className="reason-item glass-card reveal-scale active">
-              <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="reason-title">Kingdom Community</h3>
-                <p>Connect with a community of believers who share a genuine hunger for God.</p>
-              </div>
-            </div>
-
-            <div className="reason-item glass-card reveal-scale active">
-              <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="reason-title">Step Away & Focus</h3>
-                <p>Step away from the distractions of everyday life to focus fully and completely on God.</p>
-              </div>
-            </div>
-
-            <div className="reason-item glass-card reveal-scale active">
-              <div className="reason-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="reason-title">Leave Transformed</h3>
-                <p>Leave refreshed, empowered, and equipped for the next season of your journey with God.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Theme Banner */}
-          <div className="reveal active" style={{ marginTop: '70px', position: 'relative', textAlign: 'center', overflow: 'hidden', padding: '70px 30px' }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(240,180,41,0.1) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
-            <div style={{ width: '50px', height: '3px', background: 'var(--color-sunlight)', margin: '0 auto 28px', borderRadius: '2px' }}></div>
-            <p style={{ fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-sunlight)', marginBottom: '20px', fontWeight: 700, opacity: 0.9 }}>This Year's Theme</p>
-            <div style={{ fontSize: '8rem', lineHeight: 0.5, color: 'var(--color-sunlight)', opacity: 0.15, fontFamily: 'Georgia, serif', marginBottom: '10px', userSelect: 'none' }}>"</div>
-            <h3 style={{ fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontFamily: 'var(--font-heading)', fontWeight: 900, color: '#fff', lineHeight: 1.2, letterSpacing: '0.01em', margin: '0 auto 20px', maxWidth: '700px', textTransform: 'uppercase' }}>
-              {state.retreatTheme}
-            </h3>
-            <p style={{ maxWidth: '560px', margin: '0 auto 28px', color: 'rgba(255,255,255,0.65)', fontSize: '1rem', lineHeight: '1.8', fontStyle: 'italic' }}>
-              An invitation to fix our gaze on God, experience His glory afresh, and be transformed by what we behold.
-            </p>
-            <div style={{ width: '50px', height: '3px', background: 'var(--color-sunlight)', margin: '0 auto', borderRadius: '2px' }}></div>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <Link href="/register" className="btn btn-primary btn-lg">Register for The CONFLUENCE CAMP RETREAT 2026</Link>
+            ))}
           </div>
         </div>
+
       </section>
 
-      {/* Speakers Section on Homepage */}
-      {speakersList.length > 0 && (
-      <section className="bg-off-white" id="homepage-speakers-sec" style={{ padding: '90px 0', borderBottom: '1px solid rgba(10, 102, 194, 0.05)' }}>
-        <div className="container">
-          <div className="ministers-intro">
-            <span className="section-label">Guest & Worship Ministers</span>
-            <h2>Meet those leading us into worship and encounter</h2>
-            <p>These ministers are prepared to carry the retreat atmosphere with powerful praise, teaching, and prophetic ministry.</p>
-          </div>
 
-          <>
-            {featuredSpeaker && (
-                <div className="featured-speaker-wrap">
-                  <article className="speaker-card speaker-card-featured" key={featuredSpeaker.id} onClick={() => openModal(featuredSpeaker)} style={{ cursor: 'pointer' }}>
-                    <div className="featured-speaker-grid">
-                      <div className="speaker-avatar-wrap speaker-avatar-large">
-                        {featuredSpeaker.avatar ? (
-                          <img src={featuredSpeaker.avatar} alt={featuredSpeaker.name} />
-                        ) : (
-                          <svg className="speaker-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '90px', height: '90px', color: 'rgba(252, 238, 33, 0.9)', transition: 'transform 0.4s ease' }}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                          </svg>
-                        )}
-                      </div>
-                      <div className="featured-speaker-copy">
-                        <span className="featured-badge">Convener</span>
-                        <h3 className="speaker-name">{featuredSpeaker.name}</h3>
-                        <p className="speaker-role">{featuredSpeaker.role}</p>
-                      </div>
+      {/* ── Confluence Teaser ── */}
+      <section className="confluence-teaser-section">
+        {/* Background decorative element */}
+        <div className="confluence-teaser-glow" aria-hidden="true" />
+
+        <div className="container">
+          <div className="confluence-teaser-grid">
+            
+            {/* Left Column: Description & Action */}
+            <div className="confluence-teaser-left">
+              <span className="confluence-teaser-eyebrow">Annual Event</span>
+              <h2 className="confluence-teaser-heading">The Confluence Camp Retreat</h2>
+              <p className="confluence-teaser-text">
+                Every year, The Brooks convenes the Confluence Camp Retreat — an intense 3-day gathering of believers for worship, prayer, and deep biblical teaching in a camp environment.
+              </p>
+              <p className="confluence-teaser-text text-secondary">
+                The 2026 edition themed <strong>Behold the Glory of God</strong> took place on 23rd–25th July at Redemption City of God, gathering over 500 participants for four powerful sessions: Opening Night, Day Two, Glory Night, and Thanksgiving.
+              </p>
+              <div className="confluence-teaser-cta-wrap">
+                <Link href="/confluence" className="confluence-teaser-btn">
+                  Explore Confluence Sessions
+                  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Interactive cards */}
+            <div className="confluence-teaser-right">
+              <div className="confluence-teaser-cards">
+                {[
+                  { icon: "🌙", label: "Opening Night", desc: "Worship & the opening message" },
+                  { icon: "☀️", label: "Day Two", desc: "Morning, Afternoon & Evening sessions" },
+                  { icon: "✨", label: "Glory Night", desc: "A night of deep encounter" },
+                  { icon: "🙏", label: "Thanksgiving", desc: "Closing service & commissioning" },
+                ].map((s, idx) => (
+                  <div key={s.label} className="confluence-teaser-card">
+                    <div className="confluence-teaser-card-icon-wrap">
+                      <span className="confluence-teaser-card-icon">{s.icon}</span>
                     </div>
-                  </article>
-                </div>
-              )}
-
-              <div className="speakers-grid" id="cms-speakers-list">
-                {otherSpeakers.map(speaker => {
-                  const isPlaceholder = !speaker.avatar || (!speaker.avatar.startsWith("http") && !speaker.avatar.startsWith("/") && speaker.avatar.length <= 4);
-                  return (
-                    <article className="speaker-card" key={speaker.id} onClick={() => openModal(speaker)} style={{ cursor: 'pointer' }}>
-                      <div className="speaker-avatar-wrap">
-                        {isPlaceholder ? (
-                          <svg className="speaker-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '70px', height: '70px', color: 'rgba(252, 238, 33, 0.75)', transition: 'transform 0.4s ease' }}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                          </svg>
-                        ) : (
-                          <img src={speaker.avatar} alt={speaker.name} />
-                        )}
-                      </div>
-                      <div className="card-body">
-                        <h3 className="speaker-name">{speaker.name}</h3>
-                        <p className="speaker-role">{speaker.role}</p>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            </>
-        </div>
-      </section>
-      )}
-
-      {/* Retreat Portals & Directories */}
-      <section className="bg-off-white" style={{ borderBottom: 'none' }}>
-        <div className="container">
-          <h2 style={{ textAlign: 'center', marginBottom: '15px' }}>Explore the Retreat</h2>
-          <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 50px', color: 'var(--color-text-muted)' }}>
-            Navigate through our retreat portals to prepare your heart and logistics for The CONFLUENCE CAMP RETREAT 2026.
-          </p>
-
-          <div className="explore-grid">
-            <div className="explore-card reveal-scale active">
-              <div>
-                <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round"
-                      d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                  </svg>
-                </div>
-                <h3 className="explore-card-title">Camp Experience</h3>
-                <p className="explore-card-text">
-                  Understand the spiritual guidelines, lodging accommodations, free welfare feeding systems, and details on what items you need to pack for the 3-day camp.
-                </p>
-              </div>
-              <div>
-                <Link href="/experience" className="explore-action-btn explore-action-btn-secondary">
-                  View Experience &rarr;
-                </Link>
+                    <div className="confluence-teaser-card-content">
+                      <h4 className="confluence-teaser-card-title">{s.label}</h4>
+                      <p className="confluence-teaser-card-desc">{s.desc}</p>
+                    </div>
+                    <span className="confluence-teaser-card-num">0{idx + 1}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="explore-card reveal-scale active">
-              <div>
-                <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round"
-                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                  </svg>
-                </div>
-                <h3 className="explore-card-title">Ministers & Speakers</h3>
-                <p className="explore-card-text">
-                  Meet the vessels, preachers, and worship leaders prepared by the Holy Spirit to guide us into transforming encounters with the Glory of God.
-                </p>
-              </div>
-              <div>
-                <Link href="/#homepage-speakers-sec" className="explore-action-btn explore-action-btn-secondary">
-                  Meet Speakers &rarr;
-                </Link>
-              </div>
-            </div>
-
-            <div className="explore-card reveal-scale active">
-              <div>
-                <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round"
-                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="explore-card-title">Frequently Asked Questions</h3>
-                <p className="explore-card-text">
-                  Find instant answers to questions regarding transportation routes, pick-up hubs, guidelines for daily campers, and registration requirements.
-                </p>
-              </div>
-              <div>
-                <Link href="/faq" className="explore-action-btn explore-action-btn-secondary">
-                  Read FAQs &rarr;
-                </Link>
-              </div>
-            </div>
-
-            <div className="explore-card explore-card-highlight reveal-scale active">
-              <div>
-                <div className="explore-icon-box">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round"
-                      d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
-                  </svg>
-                </div>
-                <h3 className="explore-card-title">Camp Registration</h3>
-                <p className="explore-card-text">
-                  Secure your free entry pass, hostel reservations, and meal tickets. Registration is free but strictly mandatory for logistics and feeding.
-                </p>
-              </div>
-              <div>
-                <Link href="/register" className="explore-action-btn explore-action-btn-primary">
-                  Register Free Now &rarr;
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+
+      {/* ── Explore The Brooks ── */}
+      <section className="tbm-explore-section">
+        <div className="container">
+          <div className="tbm-explore-header">
+            <h2 className="tbm-explore-title">Explore The Brooks</h2>
+            <p className="tbm-explore-subtitle">
+              Everything you need to connect with, serve in, and support The Brooks Ministry.
+            </p>
+          </div>
+
+          <div className="tbm-explore-grid">
+            {/* Card 1: About */}
+            <Link href="/about" className="tbm-explore-card reveal-scale active">
+              <div className="tbm-explore-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="tbm-explore-content">
+                <h3 className="tbm-explore-card-title">About The Ministry</h3>
+                <p className="tbm-explore-card-desc">
+                  Discover the vision, mission, identity, and programs of The Brooks Ministry. Learn who we are and what drives us.
+                </p>
+              </div>
+              <div className="tbm-explore-arrow">
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </div>
+            </Link>
+
+            {/* Card 2: Volunteer */}
+            <Link href="/volunteer" className="tbm-explore-card reveal-scale active">
+              <div className="tbm-explore-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+                </svg>
+              </div>
+              <div className="tbm-explore-content">
+                <h3 className="tbm-explore-card-title">Volunteer</h3>
+                <p className="tbm-explore-card-desc">
+                  Find your service unit and join one of our 8 departments. Serving at The Brooks is an act of worship.
+                </p>
+              </div>
+              <div className="tbm-explore-arrow">
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </div>
+            </Link>
+
+            {/* Card 3: Partner */}
+            <Link href="/partners" className="tbm-explore-card reveal-scale active">
+              <div className="tbm-explore-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="tbm-explore-content">
+                <h3 className="tbm-explore-card-title">Partner With Us</h3>
+                <p className="tbm-explore-card-desc">
+                  Support the ministry through giving, sponsorship, or facility partnerships. Your seed advances the Kingdom.
+                </p>
+              </div>
+              <div className="tbm-explore-arrow">
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </div>
+            </Link>
+
+            {/* Card 4: Confluence (Highlight) */}
+            <Link href="/confluence" className="tbm-explore-card tbm-explore-highlight reveal-scale active">
+              <div className="tbm-explore-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75H3.75A.75.75 0 013 21V9.75z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 21V12h6v9" />
+                </svg>
+              </div>
+              <div className="tbm-explore-content">
+                <h3 className="tbm-explore-card-title">The Confluence</h3>
+                <p className="tbm-explore-card-desc">
+                  Watch sessions, read about past editions, and explore everything about our annual camp retreat.
+                </p>
+              </div>
+              <div className="tbm-explore-arrow">
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

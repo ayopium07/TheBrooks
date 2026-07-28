@@ -39,11 +39,11 @@ export default function ContactPage() {
         <div className="container">
           <div className="contact-hero-grid">
             <div className="contact-hero-text reveal-left active">
-              <span className="contact-tag">✦ WE ARE ONLINE</span>
+              <span className="contact-tag">✦ GET IN TOUCH</span>
               <h1>Get in Touch</h1>
-              <p className="about-lead">Have specific inquiries about transport coordinates, partnerships, or volunteering? Reach out directly.</p>
+              <p className="about-lead">Have inquiries about our Sunday services, volunteering, partnership opportunities, or general ministry information? We're here to help.</p>
               <p className="about-lead" style={{ fontSize: '1rem', opacity: 0.88, marginTop: '14px' }}>
-                Our operations desk and communications teams are available to guide you through registration queries, lodging directions, and service pathways. We look forward to hearing from you.
+                Our communications team is available to guide you through any questions about The Brooks Ministry — programs, services, partnership, and more. We look forward to hearing from you.
               </p>
             </div>
             <div className="contact-hero-showcase reveal-right active">
@@ -55,12 +55,12 @@ export default function ContactPage() {
                 <div className="stat-divider"></div>
                 <div className="stat-item">
                   <span className="stat-number">WhatsApp</span>
-                  <span className="stat-label">Instant Community Hub</span>
+                  <span className="stat-label">Ministry Community Hub</span>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item">
-                  <span className="stat-number">Redemption City</span>
-                  <span className="stat-label">Retreat Venue</span>
+                  <span className="stat-number">The Brooks</span>
+                  <span className="stat-label">Location — Coming Soon</span>
                 </div>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
             <div className="channel-card">
               <div className="channel-icon-box" style={{ background: 'rgba(37, 211, 102, 0.08)', borderColor: 'rgba(37, 211, 102, 0.25)', color: '#25D366' }}>💬</div>
               <h3 className="channel-title" style={{ color: '#25D366' }}>WhatsApp Channel</h3>
-              <p className="channel-desc">Join our broadcast channel for real-time announcements, pre-retreat prayers, and camp guides.</p>
+              <p className="channel-desc">Join our broadcast channel for ministry announcements, prayer updates, Sunday service info, and program guides.</p>
               <div className="channel-value">
                 <a href={state.contactWhatsappChannel} id="cms-contact-whatsapp" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', textDecoration: 'underline' }}>Join the Channel</a>
               </div>

@@ -3,6 +3,234 @@
 import React, { useState } from 'react';
 import { useCMS } from '@/context/CMSContext';
 
+const orgData = {
+  name: "God",
+  role: "The Supreme Architect",
+  children: [
+    {
+      name: "Lead Pastor",
+      role: "Visionary & Set Man",
+      children: [
+        {
+          name: "Embrace",
+          role: "Portfolio",
+          children: [
+            { name: "Warmth Squad", desc: "Welcomes people with love and hospitality at the doors." },
+            { name: "Flow Squad", desc: "Ensures smooth transitions and movement during services." },
+            { name: "Connect Squad", desc: "Helps first-timers get plugged into the church family." },
+            { name: "Care Collective", desc: "Provides follow-ups, calls, and spiritual check-ins." },
+            { name: "Vibe Unit", desc: "Sets the atmosphere and aesthetic energy for events." },
+            { name: "Fresh Welcome", desc: "Dedicated team for greeting and orienting new guests." },
+          ]
+        },
+        {
+          name: "Media & Creative",
+          role: "Portfolio",
+          children: [
+            { name: "Media", desc: "Handles all visual broadcasting and projection." },
+            { name: "Creative", desc: "Designs graphics, flyers, and branding assets." },
+            { name: "Technical", desc: "Manages hardware, electrical setups, and engineering." },
+            { name: "Live Streams", desc: "Broadcasts our services online to a global audience." },
+            { name: "Sounds & Lighting", desc: "Creates the perfect acoustic and visual atmosphere." },
+            { name: "Photography", desc: "Captures moments, testimonies, and events." },
+          ]
+        },
+        {
+          name: "Logistics & Ops",
+          role: "Portfolio",
+          children: [
+            { name: "Protocol", desc: "Maintains order, seating arrangements, and assists ministers." },
+            { name: "Hospitality", desc: "Manages guest welfare, refreshments, and relations." },
+            { name: "Welfare", desc: "Provides catering and ensures physical needs are met." },
+            { name: "Registration", desc: "Handles database management and tag distribution." },
+          ]
+        },
+        {
+          name: "Intercessory",
+          role: "Portfolio",
+          children: [
+            { name: "Prayer Team", desc: "Leads spiritual warfare and continuous intercession." },
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+const AccordionItem = ({ node, level = 0, openPortfolio, setOpenPortfolio }) => {
+  const isPortfolio = level === 2;
+  const isExpanded = isPortfolio ? openPortfolio === node.name : true;
+  const hasChildren = node.children && node.children.length > 0;
+
+  return (
+    <div style={{ marginBottom: '12px' }}>
+      <div
+        onClick={() => {
+          if (isPortfolio) setOpenPortfolio(isExpanded ? null : node.name);
+        }}
+        style={{
+          background: (isExpanded && isPortfolio) ? 'var(--color-brooks-blue)' : 'var(--color-pure-white)',
+          border: '1px solid',
+          borderColor: (isExpanded && isPortfolio) ? 'var(--color-sunlight)' : 'rgba(10, 102, 194, 0.1)',
+          padding: '16px 20px',
+          borderRadius: '12px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          cursor: isPortfolio ? 'pointer' : 'default',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        <div>
+          <h4 style={{ margin: 0, color: (isExpanded && isPortfolio) ? '#fff' : 'var(--color-brooks-blue)', fontSize: '1.1rem', fontWeight: 800 }}>{node.name}</h4>
+          {node.role && <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: 'var(--color-sunlight)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{node.role}</p>}
+          {node.desc && <p style={{ margin: '8px 0 0', fontSize: '0.85rem', color: (isExpanded && isPortfolio) ? 'rgba(255,255,255,0.8)' : '#666', lineHeight: 1.4 }}>{node.desc}</p>}
+        </div>
+        {hasChildren && isPortfolio && (
+          <div style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', color: isExpanded ? 'var(--color-sunlight)' : 'var(--color-brooks-blue)' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        )}
+      </div>
+      {hasChildren && isExpanded && (
+        <div style={{ paddingLeft: '16px', marginTop: '12px', borderLeft: '2px solid var(--color-sunlight)', marginLeft: '20px' }}>
+          {node.children.map((child, idx) => (
+            <AccordionItem key={idx} node={child} level={level + 1} openPortfolio={openPortfolio} setOpenPortfolio={setOpenPortfolio} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const DesktopTreeNode = ({ node, level = 0, openPortfolio, setOpenPortfolio }) => {
+  const isPortfolio = level === 2;
+  const isExpanded = isPortfolio ? openPortfolio === node.name : true;
+  const hasChildren = node.children && node.children.length > 0;
+
+  return (
+    <li>
+      <div
+        className="org-node"
+        onClick={() => {
+          if (isPortfolio) setOpenPortfolio(isExpanded ? null : node.name);
+        }}
+        style={{
+          cursor: isPortfolio ? 'pointer' : 'default',
+          borderColor: (isExpanded && isPortfolio) ? 'var(--color-sunlight)' : 'rgba(10, 102, 194, 0.15)',
+          background: (isExpanded && isPortfolio) ? 'var(--color-brooks-blue)' : 'var(--color-pure-white)',
+          transform: (isExpanded && isPortfolio) ? 'translateY(-4px)' : 'none',
+          boxShadow: (isExpanded && isPortfolio) ? '0 15px 35px rgba(0,0,0,0.08)' : '0 10px 30px rgba(0,0,0,0.04)'
+        }}
+      >
+        <h4 style={{ margin: 0, color: (isExpanded && isPortfolio) ? '#fff' : 'var(--color-brooks-blue)', fontSize: level === 0 ? '1.4rem' : '1.1rem', fontWeight: 800 }}>{node.name}</h4>
+        {node.role && <p style={{ margin: '4px 0 0', fontSize: '0.75rem', color: 'var(--color-sunlight)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{node.role}</p>}
+        {node.desc && <p style={{ margin: '8px 0 0', fontSize: '0.85rem', color: (isExpanded && isPortfolio) ? 'rgba(255,255,255,0.8)' : '#666', lineHeight: 1.4, maxWidth: '200px' }}>{node.desc}</p>}
+      </div>
+      {hasChildren && isExpanded && (
+        <ul>
+          {node.children.map((child, idx) => (
+            <DesktopTreeNode key={idx} node={child} level={level + 1} openPortfolio={openPortfolio} setOpenPortfolio={setOpenPortfolio} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
+
+function TeamsOrgChart() {
+  const [openPortfolio, setOpenPortfolio] = useState(null);
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .org-chart-desktop { display: block; overflow-x: auto; padding-bottom: 40px; }
+        .org-chart-mobile { display: none; }
+        @media (max-width: 900px) {
+          .org-chart-desktop { display: none; }
+          .org-chart-mobile { display: block; }
+        }
+
+        /* CSS Tree Styles */
+        .org-tree * { margin: 0; padding: 0; }
+        .org-tree ul {
+          padding-top: 30px; position: relative;
+          display: flex;
+          justify-content: center;
+        }
+        .org-tree li {
+          float: left; text-align: center;
+          list-style-type: none;
+          position: relative;
+          padding: 30px 10px 0 10px;
+          transition: all 0.5s;
+        }
+        /* Connector lines */
+        .org-tree li::before, .org-tree li::after{
+          content: '';
+          position: absolute; top: 0; right: 50%;
+          border-top: 2px solid rgba(10, 102, 194, 0.2);
+          width: 50%; height: 30px;
+        }
+        .org-tree li::after{
+          right: auto; left: 50%;
+          border-left: 2px solid rgba(10, 102, 194, 0.2);
+        }
+        .org-tree li:only-child::after, .org-tree li:only-child::before {
+          display: none;
+        }
+        .org-tree li:only-child{ padding-top: 0;}
+        .org-tree li:first-child::before, .org-tree li:last-child::after{
+          border: 0 none;
+        }
+        .org-tree li:last-child::before{
+          border-right: 2px solid rgba(10, 102, 194, 0.2);
+          border-radius: 0 5px 0 0;
+        }
+        .org-tree li:first-child::after{
+          border-radius: 5px 0 0 0;
+        }
+        .org-tree ul ul::before{
+          content: '';
+          position: absolute; top: 0; left: 50%;
+          border-left: 2px solid rgba(10, 102, 194, 0.2);
+          width: 0; height: 30px;
+        }
+        /* Nodes */
+        .org-node {
+          border: 1px solid rgba(10, 102, 194, 0.15);
+          background: var(--color-pure-white);
+          padding: 16px 24px;
+          display: inline-block;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+          transition: all 0.3s ease;
+          min-width: 140px;
+        }
+        .org-node:hover {
+          border-color: var(--color-sunlight) !important;
+        }
+      `}} />
+
+      <div className="org-chart-desktop">
+        <div className="org-tree reveal active">
+          <ul>
+            <DesktopTreeNode node={orgData} openPortfolio={openPortfolio} setOpenPortfolio={setOpenPortfolio} />
+          </ul>
+        </div>
+      </div>
+
+      <div className="org-chart-mobile reveal active">
+        <AccordionItem node={orgData} openPortfolio={openPortfolio} setOpenPortfolio={setOpenPortfolio} />
+      </div>
+    </>
+  );
+}
+
 export default function VolunteerPage() {
   const { state, isHydrated, registerVolunteer } = useCMS();
   const [submitted, setSubmitted] = useState(false);
@@ -54,32 +282,14 @@ export default function VolunteerPage() {
       {/* Redesigned Volunteer Hero Section */}
       <section className="volunteer-hero-section">
         <div className="container">
-          <div className="volunteer-hero-grid">
-            <div className="volunteer-hero-text reveal-left active">
-              <span className="volunteer-tag">✦ SERVE AT THE ALTAR</span>
-              <h1>Join the Volunteer Team</h1>
-              <p className="about-lead">Be an active builder of the altar. Serve in one of our core logistics and spiritual support departments.</p>
-              <p className="about-lead" style={{ fontSize: '1rem', opacity: 0.88, marginTop: '14px' }}>
-                We believe that every camper's encounter is paved by the prayers, planning, and service of dedicated volunteers. When you join the volunteer team, you are not just executing logistics; you are ministering to the Lord and preparing a tabernacle for His glory.
+          <div className="reveal active" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <div className="volunteer-hero-text">
+              <span className="volunteer-tag" style={{ margin: '0 auto 20px' }}>✦ SERVE IN THE MINISTRY</span>
+              <h1>Join the Service Team</h1>
+              <p className="about-lead" style={{ margin: '0 auto' }}>Find your service unit and volunteer in one of our core ministry departments.</p>
+              <p className="about-lead" style={{ fontSize: '1rem', opacity: 0.88, margin: '14px auto 0' }}>
+                We believe that every ministry moment is made possible by the prayers, planning, and service of dedicated volunteers. When you serve at The Brooks, you are not just fulfilling a role; you are ministering to the Lord and building the Kingdom.
               </p>
-            </div>
-            <div className="volunteer-hero-showcase reveal-right active">
-              <div className="volunteer-stats-card">
-                <div className="stat-item">
-                  <span className="stat-number">100+</span>
-                  <span className="stat-label">Consecrated Volunteers</span>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item">
-                  <span className="stat-number">8 Teams</span>
-                  <span className="stat-label">Specialized Departments</span>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item">
-                  <span className="stat-number">1 Focus</span>
-                  <span className="stat-label">Beholding His Glory</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -98,13 +308,13 @@ export default function VolunteerPage() {
           <div className="grid-2 reveal active" style={{ alignItems: 'center', gap: '50px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }} id="cms-volunteer-call-text">
               {state.volunteerCallText.split("\n\n").filter(p => p.trim() !== "").map((p, idx) => (
-                <p key={idx} style={{ fontFamily: 'var(--font-body)', fontSize: '1.15rem', lineHeight: '1.75', color: '#2c2c3e', margin: 0 }}>
+                <p key={idx} style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: '1.75', color: '#2c2c3e', margin: 0 }}>
                   {p}
                 </p>
               ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src="/Asset 8mom.png" alt="The Brooks Ministry Altar Logo" style={{ width: '100%', maxWidth: '320px', opacity: 0.9, objectFit: 'contain' }} />
+              <img src="/TBMlogo.png" alt="The Brooks Ministry Altar Logo" style={{ width: '100%', maxWidth: '320px', opacity: 0.9, objectFit: 'contain' }} />
             </div>
           </div>
         </div>
@@ -122,64 +332,10 @@ export default function VolunteerPage() {
             </h2>
             <div style={{ width: '48px', height: '3px', background: 'var(--color-sunlight)', borderRadius: '2px', margin: '0 auto' }}></div>
           </div>
+        </div>
 
-          <div className="dept-showcase-grid reveal active">
-            <div className="dept-card">
-              <div className="dept-icon-box">🛡️</div>
-              <h3 className="dept-title">Protocol</h3>
-              <p className="dept-desc">Responsible for guest welcoming, keeping order, managing seating arrangements, and assisting dignitaries.</p>
-              <span className="dept-tag">Welcoming & Order</span>
-            </div>
-
-            <div className="dept-card">
-              <div className="dept-icon-box">📸</div>
-              <h3 className="dept-title">Media & Creative</h3>
-              <p className="dept-desc">Photography, videography, livestreaming coordination, graphic assets management, and social media coverage.</p>
-              <span className="dept-tag">Creative & Socials</span>
-            </div>
-
-            <div className="dept-card">
-              <div className="dept-icon-box">🔊</div>
-              <h3 className="dept-title">Technical & Sound</h3>
-              <p className="dept-desc">Sound engineering, stage lighting, electrical setup, equipment configuration, and power management.</p>
-              <span className="dept-tag">Sound & Production</span>
-            </div>
-
-            <div className="dept-card">
-              <div className="dept-icon-box">🚚</div>
-              <h3 className="dept-title">Logistics & Ops</h3>
-              <p className="dept-desc">Handling transportation logistics, campsite arrivals, hall layout setup, and heavy-lifting coordination.</p>
-              <span className="dept-tag">Transport & Setup</span>
-            </div>
-
-            <div className="dept-card">
-              <div className="dept-icon-box">🛎️</div>
-              <h3 className="dept-title">Hospitality</h3>
-              <p className="dept-desc">Managing camper relations, guest welfare, room allocation directories, and information desk support.</p>
-              <span className="dept-tag">Relations & Care</span>
-            </div>
-
-            <div className="dept-card">
-              <div className="dept-icon-box">📝</div>
-              <h3 className="dept-title">Registration</h3>
-              <p className="dept-desc">Managing the database of campers, tag distribution, security check-in clearances, and arrivals tracking.</p>
-              <span className="dept-tag">Data & Check-in</span>
-            </div>
-
-            <div className="dept-card">
-              <div className="dept-icon-box">🔥</div>
-              <h3 className="dept-title">Prayer Team</h3>
-              <p className="dept-desc">Leading intercessory prayer cover before, during, and after sessions, holding active spiritual watch shifts.</p>
-              <span className="dept-tag">Spiritual Altar</span>
-            </div>
-
-            <div className="dept-card">
-              <div className="dept-icon-box">🍲</div>
-              <h3 className="dept-title">Welfare & Food</h3>
-              <p className="dept-desc">Supervising food distribution, managing kitchen operations, ensuring camper hydration and dining cleanliness.</p>
-              <span className="dept-tag">Catering & Care</span>
-            </div>
-          </div>
+        <div style={{ width: '100%', maxWidth: '100vw', padding: '0 20px', margin: '0 auto' }}>
+          <TeamsOrgChart />
         </div>
       </section>
 
@@ -205,7 +361,7 @@ export default function VolunteerPage() {
                 </svg>
               </div>
               <h3 className="expectation-title">Early Arrival</h3>
-              <p className="expectation-desc">All volunteers are required to arrive at the Redemption City of God on the morning of Wednesday, 22nd July, for briefing and initial hall setup.</p>
+              <p className="expectation-desc">All volunteers are required to arrive at the service venue before the designated start time for briefing, department setup, and pre-service prayers.</p>
             </div>
 
             <div className="expectation-card">
@@ -216,7 +372,7 @@ export default function VolunteerPage() {
                 </svg>
               </div>
               <h3 className="expectation-title">Spiritual Prep</h3>
-              <p className="expectation-desc">Volunteers are expected to participate in all pre-retreat prayer calls and department alignments to remain spiritually alert.</p>
+              <p className="expectation-desc">Volunteers are expected to participate in pre-service prayer calls, weekly devotionals, and department alignments to remain spiritually sharp and ready.</p>
             </div>
 
             <div className="expectation-card">
