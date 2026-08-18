@@ -50,13 +50,13 @@ export default function HomePage() {
             </div>
 
             <div className="tbm-service-info">
-              <span className="tbm-service-badge">Sunday Service</span>
+              <span className="tbm-service-badge">The Conclave</span>
               <div className="tbm-service-rows">
                 <div className="tbm-service-row">
                   <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>[Time — To Be Updated]</span>
+                  <span>5pm-7pm</span>
                 </div>
                 <div className="tbm-service-divider" aria-hidden="true" />
                 <div className="tbm-service-row">
@@ -65,7 +65,7 @@ export default function HomePage() {
                       d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span>[Location — To Be Updated]</span>
+                  <span>46, Adeniran Ogunsanya, Ladel Baby center, Surulere, Lagos State</span>
                 </div>
               </div>
             </div>
@@ -108,9 +108,9 @@ export default function HomePage() {
                 What We Do
               </h3>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                <li>⛪ <strong>Sunday Services</strong> — Weekly gatherings built on prayer and the Word</li>
-                <li>📖 <strong>Bible Study Groups</strong> — Deep-dive scriptural grounding</li>
-                <li>🎓 <strong>Campus Outreaches</strong> — Taking the Gospel to universities</li>
+                <li>⛪ <strong>The Conclave</strong> — A Prophetic assembly for Word, Worship and Prayer</li>
+                <li>📖 <strong>Lambano</strong> — Quarterly Vigil</li>
+                <li>🎓 <strong>Spirit Invasion</strong> — Taking the Gospel to universities</li>
                 <li>⛺ <strong>Annual Camp Retreat</strong> — The Confluence Camp Retreat</li>
                 <li>🌍 <strong>Kingdom Missions</strong> — Local evangelism and discipleship</li>
               </ul>
@@ -206,7 +206,7 @@ export default function HomePage() {
 
         <div className="container">
           <div className="confluence-teaser-grid">
-            
+
             {/* Left Column: Description & Action */}
             <div className="confluence-teaser-left">
               <span className="confluence-teaser-eyebrow">Annual Event</span>
